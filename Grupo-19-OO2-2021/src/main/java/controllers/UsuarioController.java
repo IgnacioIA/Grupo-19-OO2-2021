@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import objetos2.demo.helpers.ViewRouteHelper;
-import objetos2.demo.models.UsuarioModel;
-import objetos2.demo.services.UsuarioService;
+import helpers.ViewRouteHelper;
+import models.UsuarioModel;
+import services.UsuarioService;
 
 @Controller
 //@PreAuthorize("hasRole('administrador')")

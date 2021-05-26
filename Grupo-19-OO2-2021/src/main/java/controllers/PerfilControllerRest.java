@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import objetos2.demo.models.PerfilModel;
-import objetos2.demo.services.PerfilService;
+import models.PerfilModel;
+import services.PerfilService;
 
 @RestController()
 public class PerfilControllerRest {

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import objetos2.demo.services.UsuarioService;
+import services.UsuarioService;
 
 
 

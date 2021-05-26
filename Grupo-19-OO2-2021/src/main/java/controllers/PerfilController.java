@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import objetos2.demo.helpers.ViewRouteHelper;
-import objetos2.demo.models.PerfilModel;
-import objetos2.demo.services.PerfilService;
+import helpers.ViewRouteHelper;
+import models.PerfilModel;
+import services.PerfilService;
 
 @Controller
 @RequestMapping("/perfil")
