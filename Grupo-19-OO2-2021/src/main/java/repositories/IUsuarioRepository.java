@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import entities.Usuario;
+
 @Repository("usuarioRepository")
 public interface IUsuarioRepository extends JpaRepository<Usuario, Serializable>{
 

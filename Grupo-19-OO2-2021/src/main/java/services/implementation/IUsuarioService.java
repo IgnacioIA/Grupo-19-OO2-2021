@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import objetos2.demo.entities.Usuario;
-import objetos2.demo.models.UsuarioModel;
+import entities.Usuario;
+import models.UsuarioModel;
 
 public interface  IUsuarioService {
 	public List<Usuario> getAll();

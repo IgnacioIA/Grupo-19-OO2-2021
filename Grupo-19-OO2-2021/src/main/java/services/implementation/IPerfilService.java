@@ -3,8 +3,8 @@ package services.implementation;
 import java.util.List;
 
 
-import objetos2.demo.entities.Perfil;
-import objetos2.demo.models.PerfilModel;
+import entities.Perfil;
+import models.PerfilModel;
 
 public interface IPerfilService  {
 	public List<Perfil> getAll();

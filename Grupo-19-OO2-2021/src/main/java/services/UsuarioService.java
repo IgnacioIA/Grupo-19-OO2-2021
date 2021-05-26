@@ -65,11 +65,11 @@ public class UsuarioService implements IUsuarioService ,UserDetailsService {
 	
 	@Override
 	public UserDetails loadUserByUsername(String nombreUsuario) throws UsernameNotFoundException {
-		objetos2.demo.entities.Usuario user = usuarioRepository.findByNombreUsuario(nombreUsuario);
+		entities.Usuario user = usuarioRepository.findByNombreUsuario(nombreUsuario);
 		user.setPerfil(perfilRepository.findByIdPerfil(user.getPerfil().getIdPerfil()));
 		return buildUser(user, buildGrantedAuthorities(user.getPerfil()));
 	}
-	private User buildUser(objetos2.demo.entities.Usuario user, List<GrantedAuthority> grantedAuthorities) {
+	private User buildUser(entities.Usuario user, List<GrantedAuthority> grantedAuthorities) {
 		return new User(user.getNombreUsuario(), user.getPassword(), user.isActivo(),
 						true, true, true, //accountNonExpired, credentialsNonExpired, accountNonLocked,
 						grantedAuthorities);

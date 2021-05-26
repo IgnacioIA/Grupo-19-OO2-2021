@@ -1,10 +1,10 @@
-package com.Grupo19OO22021;
+package objetos2.demo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Grupo19Oo22021ApplicationTests {
+class ProyectCuatrimestralApplicationTests {
 
 	@Test
 	void contextLoads() {
