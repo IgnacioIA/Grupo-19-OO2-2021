@@ -1,5 +1,6 @@
 package com.Grupo19OO22021.controllers;
 
+import org.apache.pdfbox.pdmodel.PDDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.Grupo19OO22021.helpers.ViewRouteHelper;
 import com.Grupo19OO22021.models.PerfilModel;
+import com.Grupo19OO22021.pdf.GeneratePDF;
 import com.Grupo19OO22021.services.PerfilService;
 
 @Controller
@@ -62,6 +64,12 @@ public class PerfilController {
 	
 	@GetMapping("/list")
 	public ModelAndView listAllJugador() {
+		GeneratePDF document = new GeneratePDF(new PDDocument());
+		try {
+			PDDocument documento = document.generatePDCListPerfil(perfilService.getAll());
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 		ModelAndView mav = new ModelAndView(ViewRouteHelper.LISTP);
 		mav.addObject("perfiles", perfilService.getAll());
 		return mav;
