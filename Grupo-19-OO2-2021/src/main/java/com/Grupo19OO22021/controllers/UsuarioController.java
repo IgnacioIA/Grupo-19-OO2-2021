@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,6 +48,7 @@ public class UsuarioController {
 		return "redirect:/usuario/index";
 	}
 
+	@PreAuthorize("hasRole('auditor')")
 	@GetMapping("/new")
 	public String create(Model model) {
 		model.addAttribute("usuario", new UsuarioModel());
@@ -54,6 +56,7 @@ public class UsuarioController {
 	}
 
 
+	@PreAuthorize("hasRole('auditor')")
 	@PostMapping("/save")
 	public String create(@Valid @ModelAttribute("usuario") UsuarioModel usuarioModel, BindingResult result,
 			ModelMap model) {
@@ -104,6 +107,7 @@ public class UsuarioController {
 		return mav;
 	}
 
+	@PreAuthorize("hasRole('auditor')")
 	@GetMapping("/editar/{idUsuario}")
 	public String editar(@ModelAttribute("idUsuario") int idUsuario, Model model) {
 		UsuarioModel usuario = usuarioService.findById(idUsuario);
@@ -111,6 +115,7 @@ public class UsuarioController {
 		return ViewRouteHelper.NEWUSUARIO;
 	}
 
+	@PreAuthorize("hasRole('auditor')")
 	@GetMapping("/eliminar/{idUsuario}")
 	public String delete(@ModelAttribute("idUsuario") int idUsuario, Model model) {
 		usuarioService.darDeBaja(idUsuario);

@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -18,25 +20,26 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name="perfil")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Perfil {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idPerfil;
+	protected int idPerfil;
 	
 	@Column(name="nombrePerfil")
-	private String nombrePerfil;
+	protected String nombrePerfil;
 	
 	@Column(name="createdat")
 	@CreationTimestamp
-	private LocalDateTime createdAt;
+	protected LocalDateTime createdAt;
 	
 	@Column(name="updatedat")
 	@UpdateTimestamp
-	private LocalDateTime updatedAt;
+	protected LocalDateTime updatedAt;
 	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="perfil")
-	private Set<Usuario> usuarios = new HashSet<Usuario>();
+	protected Set<Usuario> usuarios = new HashSet<Usuario>();
 
 	
 

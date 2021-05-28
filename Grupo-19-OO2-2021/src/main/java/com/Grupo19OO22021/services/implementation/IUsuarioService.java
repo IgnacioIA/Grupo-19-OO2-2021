@@ -23,12 +23,5 @@ public interface  IUsuarioService {
 	public boolean validoPassword(UsuarioModel usuario,String password); 
 	public boolean darDeBaja(int idUsuario);
 	public UserDetails loadUserByUsername(String nombreUsuario) throws UsernameNotFoundException;
-	
-	//USADOS PARA LA VALIDACION 
-	public Iterable<Usuario> getAllUsuarios();
-	//private boolean checkUsernameAvailable(Usuario usuario);
-	
-	
-	
-	
 }
+

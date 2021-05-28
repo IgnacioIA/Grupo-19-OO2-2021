@@ -3,6 +3,7 @@ package com.Grupo19OO22021.controllers;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,6 +39,7 @@ public class PerfilController {
 		return "redirect:/";
 	}
 	*/
+	@PreAuthorize("hasRole('auditor')")
 	@GetMapping("/new")
 	public String create(Model model) {
 		model.addAttribute("perfil", new PerfilModel());
@@ -45,6 +47,7 @@ public class PerfilController {
 		return ViewRouteHelper.NEWPERFIL;
 	}
 	
+	@PreAuthorize("hasRole('auditor')")
 	@PostMapping("/seve")
 	public String create(@ModelAttribute("perfil") PerfilModel perfilModel,Model model) {
 		try {
@@ -75,6 +78,7 @@ public class PerfilController {
 		return mav;
 	}
 
+	@PreAuthorize("hasRole('auditor')")
 	@GetMapping("/editar/{idPerfil}")
 	public String editar(@ModelAttribute("idPerfil") int idPerfil, Model model) {
 		PerfilModel perfil= perfilService.findById(idPerfil);
@@ -82,6 +86,7 @@ public class PerfilController {
 		return ViewRouteHelper.NEWPERFIL;
 	}
 	
+	@PreAuthorize("hasRole('auditor')")
 	@GetMapping("/eliminar/{idPerfil}")
 	public String delete(@ModelAttribute("idPerfil") int idPerfil, Model model) {
 		perfilService.remove(idPerfil);
