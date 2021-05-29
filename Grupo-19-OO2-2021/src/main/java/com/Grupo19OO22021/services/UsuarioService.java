@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.Grupo19OO22021.converters.UsuarioConverter;
@@ -62,6 +63,12 @@ public class UsuarioService implements IUsuarioService ,UserDetailsService {
 		return l;
 	}
 	
+	@Override
+	public List<Usuario> getAllActivo() {
+		List<Usuario> list = usuarioRepository.findAllByActivo(true);
+		return list;
+	}
+	
 	
 	@Override
 	public UserDetails loadUserByUsername(String nombreUsuario) throws UsernameNotFoundException {
@@ -85,17 +92,44 @@ public class UsuarioService implements IUsuarioService ,UserDetailsService {
 		
 		return new ArrayList<GrantedAuthority>(grantedAuthorities);
 	}
+	
+
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder;
+
 
 	@Override
 	public UsuarioModel insertOrUpdate(UsuarioModel usuarioModel) {
 		try {
 			usuarioModel.setTipoUsuario(usuarioModel.getPerfil().getIdPerfil());
 			usuarioModel.setActivo(true);
-			Usuario usuario= usuarioRepository.save(usuarioConverter.modelToEntity(usuarioModel));
+
+			//ANTES DE GUARDAR AL USUARIO ENCRIPTO SU CONTRASEÑA
+			String encodePassword = bCryptPasswordEncoder.encode(usuarioModel.getPassword());
+			usuarioModel.setPassword(encodePassword);
+
+			Usuario usuario = usuarioRepository.save(usuarioConverter.modelToEntity(usuarioModel));
 			return usuarioConverter.entityToModel(usuario);
 		} catch (Exception e) {
-			throw new UsuarioExistenteException(
-					"No se puede agregar ese usuario porque ya hay un usuario con ese nombre");
+			throw new UsuarioExistenteException("No se puede agregar ya que hay un usuario con ese nombre de Usuario");
+
+		}
+//		return usuarioConverter.entityToModel(usuario);
+	}
+
+	@Override
+	public UsuarioModel upDateBaja(UsuarioModel usuarioModel) {
+		try {
+			usuarioModel.setTipoUsuario(usuarioModel.getPerfil().getIdPerfil());
+
+			//ANTES DE GUARDAR AL USUARIO ENCRIPTO SU CONTRASEÑA
+			String encodePassword = bCryptPasswordEncoder.encode(usuarioModel.getPassword());
+			usuarioModel.setPassword(encodePassword);
+
+			Usuario usuario = usuarioRepository.save(usuarioConverter.modelToEntity(usuarioModel));
+			return usuarioConverter.entityToModel(usuario);
+		} catch (Exception e) {
+			throw new UsuarioExistenteException("No se puede agregar ya que hay un usuario con ese nombre de Usuario");
 
 		}
 //		return usuarioConverter.entityToModel(usuario);
@@ -115,7 +149,7 @@ public class UsuarioService implements IUsuarioService ,UserDetailsService {
 		try {
 			Usuario u= usuarioRepository.findByIdUsuario(idUsuario);
 			u.setActivo(false);
-			insertOrUpdate(usuarioConverter.entityToModel(u));
+			upDateBaja(usuarioConverter.entityToModel(u));
 			return true;
 		}catch (Exception e) {
 			return false;
@@ -142,6 +176,17 @@ public class UsuarioService implements IUsuarioService ,UserDetailsService {
 		
 		return models;
 	}
+	
+	// VALIDACIONES
+
+		@Autowired
+		IUsuarioRepository repository;
+
+		@Override
+		public Iterable<Usuario> getAllUsuarios() {
+			return repository.findAll();
+		}
+	
 	@Override
 	public boolean validoPassword(UsuarioModel usuario,String password) {
 		return !usuario.getPassword().equalsIgnoreCase(password);

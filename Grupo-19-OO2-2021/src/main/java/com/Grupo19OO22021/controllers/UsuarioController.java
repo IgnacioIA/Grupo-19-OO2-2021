@@ -48,7 +48,7 @@ public class UsuarioController {
 		return "redirect:/usuario/index";
 	}
 
-	@PreAuthorize("hasRole('auditor')")
+	//@PreAuthorize("hasRole('nombre_usuario_angie')")
 	@GetMapping("/new")
 	public String create(Model model) {
 		model.addAttribute("usuario", new UsuarioModel());
@@ -56,7 +56,7 @@ public class UsuarioController {
 	}
 
 
-	@PreAuthorize("hasRole('auditor')")
+	//@PreAuthorize("hasRole('nombre_usuario_angie')")
 	@PostMapping("/save")
 	public String create(@Valid @ModelAttribute("usuario") UsuarioModel usuarioModel, BindingResult result,
 			ModelMap model) {
@@ -107,7 +107,7 @@ public class UsuarioController {
 		return mav;
 	}
 
-	@PreAuthorize("hasRole('auditor')")
+	//@PreAuthorize("hasRole('administrador')")
 	@GetMapping("/editar/{idUsuario}")
 	public String editar(@ModelAttribute("idUsuario") int idUsuario, Model model) {
 		UsuarioModel usuario = usuarioService.findById(idUsuario);
@@ -115,7 +115,7 @@ public class UsuarioController {
 		return ViewRouteHelper.NEWUSUARIO;
 	}
 
-	@PreAuthorize("hasRole('auditor')")
+	//@PreAuthorize("hasRole('administrador')")
 	@GetMapping("/eliminar/{idUsuario}")
 	public String delete(@ModelAttribute("idUsuario") int idUsuario, Model model) {
 		usuarioService.darDeBaja(idUsuario);

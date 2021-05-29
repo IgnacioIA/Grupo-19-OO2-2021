@@ -39,7 +39,7 @@ public class PerfilController {
 		return "redirect:/";
 	}
 	*/
-	@PreAuthorize("hasRole('auditor')")
+	//@PreAuthorize("hasRole('auditor')")
 	@GetMapping("/new")
 	public String create(Model model) {
 		model.addAttribute("perfil", new PerfilModel());
@@ -47,7 +47,7 @@ public class PerfilController {
 		return ViewRouteHelper.NEWPERFIL;
 	}
 	
-	@PreAuthorize("hasRole('auditor')")
+	//@PreAuthorize("hasRole('auditor')")
 	@PostMapping("/seve")
 	public String create(@ModelAttribute("perfil") PerfilModel perfilModel,Model model) {
 		try {
@@ -78,7 +78,7 @@ public class PerfilController {
 		return mav;
 	}
 
-	@PreAuthorize("hasRole('auditor')")
+	//@PreAuthorize("hasRole('auditor')")
 	@GetMapping("/editar/{idPerfil}")
 	public String editar(@ModelAttribute("idPerfil") int idPerfil, Model model) {
 		PerfilModel perfil= perfilService.findById(idPerfil);
@@ -86,7 +86,7 @@ public class PerfilController {
 		return ViewRouteHelper.NEWPERFIL;
 	}
 	
-	@PreAuthorize("hasRole('auditor')")
+	//@PreAuthorize("hasRole('auditor')")
 	@GetMapping("/eliminar/{idPerfil}")
 	public String delete(@ModelAttribute("idPerfil") int idPerfil, Model model) {
 		perfilService.remove(idPerfil);
