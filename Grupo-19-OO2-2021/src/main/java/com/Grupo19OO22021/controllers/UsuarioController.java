@@ -1,10 +1,13 @@
 package com.Grupo19OO22021.controllers;
 
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,9 +20,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.Grupo19OO22021.entities.Usuario;
 import com.Grupo19OO22021.helpers.ViewRouteHelper;
 import com.Grupo19OO22021.models.UsuarioModel;
+import com.Grupo19OO22021.pdf.GeneratePDFUsuario;
 import com.Grupo19OO22021.services.UsuarioService;
+import com.lowagie.text.DocumentException;
 
 @Controller
 //@PreAuthorize("hasRole('administrador')")
@@ -120,6 +126,39 @@ public class UsuarioController {
 		usuarioService.darDeBaja(idUsuario);
 		return "redirect:/usuario/list";
 	}
+	
+	
+	
+	@GetMapping("/usuarios.pdf")
+	public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException {
+		response.setContentType("aplication/pdf");
+		
+		
+		//DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+		//String currentDateTime = dateFormatter.format(new Date(0, 0, 0));
+		
+		
+		String headerKey = "Content-Disposition";
+		String headerValue = "attachment; filename=Usuarios.pdf";
+		
+		response.setHeader(headerKey, headerValue);
+		
+		List<Usuario> listUsuario = usuarioService.getAll();
+		
+		
+		GeneratePDFUsuario pdf =  new GeneratePDFUsuario(listUsuario);
+		pdf.export(response);
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 	/*
 	 * @GetMapping("/traerJEP") public String agegar2(Model model) {
 	 * model.addAttribute(JUGADOR_KEY, new Jugador()); return "formEP"; }
