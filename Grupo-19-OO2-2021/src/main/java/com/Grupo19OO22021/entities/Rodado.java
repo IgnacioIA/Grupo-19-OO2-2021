@@ -33,8 +33,9 @@ public class Rodado {
 	public Rodado() {
 	}
 
-	public Rodado(String dominio, String vehiculo) {
+	public Rodado(int idRodado,String dominio, String vehiculo) {
 		super();
+		this.idRodado=idRodado;
 		this.dominio = dominio;
 		this.vehiculo = vehiculo;
 	}

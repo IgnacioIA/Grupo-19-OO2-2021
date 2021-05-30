@@ -3,6 +3,9 @@ package com.Grupo19OO22021.models;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 import com.Grupo19OO22021.entities.PermisoPeriodo;
 
 public class RodadoModel {
@@ -10,10 +13,12 @@ public class RodadoModel {
 
 	private int idRodado;
 	
-
+	@NotBlank
+	@Size(min=3, max=15,message="No se cumplen las reglas del tamano (3-15)")
 	private String dominio;
 	
-
+	@NotBlank
+	@Size(min=3, max=15,message="No se cumplen las reglas del tamano (3-15)")
 	private String vehiculo;
 
 	
@@ -23,8 +28,9 @@ public class RodadoModel {
 	public RodadoModel() {
 	}
 
-	public RodadoModel(String dominio, String vehiculo) {
+	public RodadoModel(int idRodado,String dominio, String vehiculo) {
 		super();
+		this.idRodado=idRodado;
 		this.dominio = dominio;
 		this.vehiculo = vehiculo;
 	}

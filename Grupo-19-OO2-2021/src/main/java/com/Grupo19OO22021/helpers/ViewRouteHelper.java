@@ -19,4 +19,8 @@ public class ViewRouteHelper {
 
 	public final static String LISTP = "perfil/listPerfil";
 
+	//vistas de rodado
+
+	public final static String NEWRODADO = "rodado/formRodado";
+	
 }
