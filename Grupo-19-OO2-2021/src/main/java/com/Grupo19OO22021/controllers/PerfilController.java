@@ -1,11 +1,15 @@
 package com.Grupo19OO22021.controllers;
 
+import javax.validation.Valid;
+
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.Grupo19OO22021.helpers.ViewRouteHelper;
 import com.Grupo19OO22021.models.PerfilModel;
+import com.Grupo19OO22021.models.UsuarioModel;
 import com.Grupo19OO22021.pdf.GeneratePDF;
 import com.Grupo19OO22021.services.PerfilService;
 
@@ -49,14 +54,25 @@ public class PerfilController {
 	
 	//@PreAuthorize("hasRole('auditor')")
 	@PostMapping("/seve")
-	public String create(@ModelAttribute("perfil") PerfilModel perfilModel,Model model) {
-		try {
+	public String create(@Valid @ModelAttribute("perfil") PerfilModel perfilModel, BindingResult result,ModelMap model) {
+		if (result.hasErrors()) {   //SI OCURRE UN ERROR
+			model.addAttribute("perfil", perfilModel);
+			model.addAttribute("confirmacion", "Operacion DENEGADA");
+		} else {
+			try {
 			perfilService.insertOrUpdate(perfilModel);
-			
+			model.addAttribute("perfil", new PerfilModel());
+			model.addAttribute("confirmacion", "Operacion sobre el Perfil exitosa");
+		
 		} catch (Exception e) {
-			return "redirect:/perfil/new";
+			model.addAttribute("formErrorMessage", e.getMessage());
+			model.addAttribute("perfil", perfilModel);
+			
+			//return "redirect:/perfil/new";
 		}
-		model.addAttribute("confirmacion", "Operacion sobre el perfil exitosa");
+		}
+				
+		//model.addAttribute("confirmacion", "Operacion sobre el perfil exitosa");
 		return ViewRouteHelper.NEWPERFIL;
 	}
 	@GetMapping("/home/{idPerfil}")
