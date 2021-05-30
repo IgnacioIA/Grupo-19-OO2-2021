@@ -11,3 +11,8 @@ spring:
       dialect: org.hibernate.dialect.MySQL5Dialect
   thymeleaf:
     cache: false
+  mvc:
+     contentnegotiation:
+             media-types:
+                     pdf: application/pdf
+             favor-parameter: true

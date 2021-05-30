@@ -24,8 +24,9 @@
 			</tr>
 			
 		</tbody>
-	<a href="perfiles.pdf" download="perfiles.pdf">descargar PDF con Perfiles</a>
-	<button type="submit" onclick="window.location.href='perfiles.pdf'">Download!</button>
+		<!-- JQuery  <a th:href="perfiles.pdf" download="perfiles.pdf">descargar PDF con Perfiles</a>      -->
+	<a th:href="@{/perfil/perfiles.pdf}">descargar PDF con Perfiles</a>
+	<!-- <button type="submit" onclick="window.location.href='perfiles.pdf'">Download!</button>-->
 	</table>
 	<div>
 	<br/>

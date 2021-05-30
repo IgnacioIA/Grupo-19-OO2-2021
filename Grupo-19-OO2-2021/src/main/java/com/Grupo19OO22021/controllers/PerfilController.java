@@ -1,11 +1,13 @@
 package com.Grupo19OO22021.controllers;
 
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
-import org.apache.pdfbox.pdmodel.PDDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -16,11 +18,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.Grupo19OO22021.entities.Perfil;
 import com.Grupo19OO22021.helpers.ViewRouteHelper;
 import com.Grupo19OO22021.models.PerfilModel;
-import com.Grupo19OO22021.models.UsuarioModel;
 import com.Grupo19OO22021.pdf.GeneratePDF;
 import com.Grupo19OO22021.services.PerfilService;
+import com.lowagie.text.DocumentException;
 
 @Controller
 @RequestMapping("/perfil")
@@ -83,9 +86,9 @@ public class PerfilController {
 	
 	@GetMapping("/list")
 	public ModelAndView listAllJugador() {
-		GeneratePDF document = new GeneratePDF(new PDDocument());
+		//GeneratePDF document = new GeneratePDF(new PDDocument());
 		try {
-			PDDocument documento = document.generatePDCListPerfil(perfilService.getAll());
+			//PDDocument documento = document.generatePDCListPerfil(perfilService.getAll());
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -108,4 +111,36 @@ public class PerfilController {
 		perfilService.remove(idPerfil);
 		return "redirect:/perfil/list";
 	}
+	
+	
+	@GetMapping("/perfiles.pdf")
+	public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException {
+		response.setContentType("aplication/pdf");
+		
+		
+		//DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+		//String currentDateTime = dateFormatter.format(new Date(0, 0, 0));
+		
+		
+		String headerKey = "Content-Disposition";
+		String headerValue = "attachment; filename=perfil.pdf";
+		
+		response.setHeader(headerKey, headerValue);
+		
+		List<Perfil> listPerfil = perfilService.getAll();
+		
+		
+		GeneratePDF pdf =  new GeneratePDF(listPerfil);
+		pdf.export(response);
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 }

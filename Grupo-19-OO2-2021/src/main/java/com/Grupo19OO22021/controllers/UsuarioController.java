@@ -100,10 +100,9 @@ public class UsuarioController {
 	}
 
 	@GetMapping("/list")
-	public ModelAndView listAllJugador() {
+	public ModelAndView listAllUsuarios() {
 		ModelAndView mav = new ModelAndView(ViewRouteHelper.LISTU);
 		mav.addObject("usuarios", usuarioService.getAll());
-		// mav.addObject("posicion", posicionService);
 		return mav;
 	}
 

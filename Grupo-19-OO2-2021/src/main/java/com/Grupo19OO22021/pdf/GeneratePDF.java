@@ -1,31 +1,104 @@
+
 package com.Grupo19OO22021.pdf;
 
-import java.util.Iterator;
+import java.awt.Color;
+import java.io.IOException;
 import java.util.List;
 
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.common.PDRectangle;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import javax.servlet.http.HttpServletResponse;
+
 
 import com.Grupo19OO22021.entities.Perfil;
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.FontFactory;
+import com.lowagie.text.PageSize;
+import com.lowagie.text.Paragraph;
+import com.lowagie.text.Phrase;
+import com.lowagie.text.pdf.PdfPCell;
+import com.lowagie.text.pdf.PdfPTable;
+import com.lowagie.text.pdf.PdfWriter;
 
 public class GeneratePDF {
+	
+	private List<Perfil> listPerfil;
+	
+	
+	public GeneratePDF(List<Perfil> listPerfil) {
+		this.listPerfil=listPerfil;
+	}
+	
+	private void writeTableHeader(PdfPTable tabla) {
+		PdfPCell cell = new PdfPCell();
+		
+		com.lowagie.text.Font font = FontFactory.getFont(FontFactory.HELVETICA);
+		font.setColor(Color.BLUE);
+		
+		
+		cell.setPhrase(new Phrase("ID", font));
+		tabla.addCell(cell);
+		cell.setPhrase(new Phrase("Nombre", font));
+		tabla.addCell(cell);
+		
+		//cell.setPhrase(new Phrase);
+		//tabla.addCell(cell);
+		//Datos del perfil
+		
+		
+	}
+	
+	
+	private void writeTableData(PdfPTable tabla) {
+		for (Perfil perfil : listPerfil) {
+			tabla.addCell(String.valueOf(perfil.getIdPerfil()));
+			tabla.addCell(perfil.getNombrePerfil());
+			//tabla.addCell(String.valueOf(perfil.getIdPerfil()));
+		
+		}
+		
+	}
+	
+	public void export(HttpServletResponse response) throws DocumentException, IOException {
+		Document document = new Document(PageSize.A4);
+		
+		PdfWriter.getInstance(document,response.getOutputStream());
+		
+		document.open();
+		
+		document.add(new Paragraph("Lista de Perfiles"));
+		
+		PdfPTable tabla = new PdfPTable(2);
+		tabla.setWidthPercentage(100);
+		tabla.setSpacingBefore(15);
+		
+		
+		writeTableHeader(tabla);
+		writeTableData(tabla);
+		
+		document.add(tabla);
+		document.close();
+	}
+	
+	
+	/*
 	private PDDocument documento;
+	
 	public GeneratePDF(PDDocument documento) {
 		super();
 		this.documento = documento;
 	}
+	
+	
 	public PDDocument getDocumento() {
 		return documento;
 	}
+	
 	public void setDocumento(PDDocument documento) {
 		this.documento = documento;
 	}
-	public static PDDocument generatePDCListPerfil(List<Perfil> listPerfil) throws Exception{
 	
-		
+	
+	public static PDDocument generatePDCListPerfil(List<Perfil> listPerfil) throws Exception{
 	
 	try (PDDocument document = new PDDocument()) {
         PDPage page = new PDPage(PDRectangle.A6);
@@ -59,7 +132,12 @@ public class GeneratePDF {
         return document;
     }
 	}
+	
+	
 	public static String imprimirPerfil(Perfil perfil) {
 		return perfil.getIdPerfil() +"                      " + perfil.getNombrePerfil()+ "                                                                                                                 ";
 	}
+	
+	
+	*/
 }
