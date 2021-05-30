@@ -15,7 +15,7 @@ import com.Grupo19OO22021.services.UsuarioService;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled=true)
+@EnableGlobalMethodSecurity(securedEnabled=true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
@@ -31,6 +31,23 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 				.antMatchers("/include/**","/css/**","/icons/**","/img/**","/js/**","/layer/**").permitAll()
+				//HTTPS QUE PUEDE INGRESAR UN AUDITOR
+			/*
+				.antMatchers("/usuario/new").hasAnyRole("ADMIN")
+				.antMatchers("/usuario/new/").hasAnyRole("ADMIN")
+				.antMatchers("/usuario/save").hasAnyRole("ADMIN")
+				.antMatchers("/usuario/home/**").hasAnyRole("ADMIN")
+				.antMatchers("/usuario/editar/**").hasAnyRole("ADMIN")
+			    .antMatchers("/usuario/eliminar/**").hasAnyRole("ADMIN")
+			    
+			    .antMatchers("/perfil/new").hasAnyRole("ADMIN")
+			    .antMatchers("/perfil/new/").hasAnyRole("ADMIN")
+				.antMatchers("/perfil/seve").hasAnyRole("ADMIN")
+				.antMatchers("/perfil/home/**").hasAnyRole("ADMIN")
+				.antMatchers("/perfil/editar/**").hasAnyRole("ADMIN")
+			    .antMatchers("/perfil/eliminar/**").hasAnyRole("ADMIN")
+				
+		*/		
 				.anyRequest().authenticated()
 			.and()
 				.formLogin().loginPage("/usuario/login").loginProcessingUrl("/usuario/loginprocess")
@@ -45,5 +62,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		 BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(4);
 	        return bCryptPasswordEncoder;
 	    }
+
+	
+	 
+	 
+	 
+	 
 }
 

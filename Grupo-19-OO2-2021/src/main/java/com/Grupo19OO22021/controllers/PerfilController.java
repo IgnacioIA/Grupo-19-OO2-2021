@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -32,22 +33,8 @@ public class PerfilController {
 	@Qualifier("perfilService")
 	private PerfilService perfilService;
 
-	
 
-	//spring.jpa.hibernate.ddl-auto=update
-/*
-	@PostMapping("/seve")
-	public String seve(@Validated Perfil u, Model model) {
-		try {
-			PerfilService.addJugador(u);
-		} catch (Exception e) {
-			model.addAttribute("exception", e.getMessage());
-			return "formPerfil";
-		}
-		return "redirect:/";
-	}
-	*/
-	//@PreAuthorize("hasRole('auditor')")
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/new")
 	public String create(Model model) {
 		model.addAttribute("perfil", new PerfilModel());
@@ -55,7 +42,7 @@ public class PerfilController {
 		return ViewRouteHelper.NEWPERFIL;
 	}
 	
-	//@PreAuthorize("hasRole('auditor')")
+	@Secured("ROLE_ADMIN")
 	@PostMapping("/seve")
 	public String create(@Valid @ModelAttribute("perfil") PerfilModel perfilModel, BindingResult result,ModelMap model) {
 		if (result.hasErrors()) {   //SI OCURRE UN ERROR
@@ -75,9 +62,9 @@ public class PerfilController {
 		}
 		}
 				
-		//model.addAttribute("confirmacion", "Operacion sobre el perfil exitosa");
 		return ViewRouteHelper.NEWPERFIL;
 	}
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/home/{idPerfil}")
 	public String homePerfil(@ModelAttribute("idPerfil") int idPerfil,Model model) {
 		model.addAttribute("perfil", perfilService.findById(idPerfil));
@@ -97,7 +84,7 @@ public class PerfilController {
 		return mav;
 	}
 
-	//@PreAuthorize("hasRole('auditor')")
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/editar/{idPerfil}")
 	public String editar(@ModelAttribute("idPerfil") int idPerfil, Model model) {
 		PerfilModel perfil= perfilService.findById(idPerfil);
@@ -105,7 +92,7 @@ public class PerfilController {
 		return ViewRouteHelper.NEWPERFIL;
 	}
 	
-	//@PreAuthorize("hasRole('auditor')")
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/eliminar/{idPerfil}")
 	public String delete(@ModelAttribute("idPerfil") int idPerfil, Model model) {
 		perfilService.remove(idPerfil);

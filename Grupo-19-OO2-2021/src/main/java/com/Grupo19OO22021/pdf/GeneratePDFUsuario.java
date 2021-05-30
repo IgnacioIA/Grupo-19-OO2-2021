@@ -32,6 +32,8 @@ private List<Usuario> listUsuario;
 		
 		cell.setBackgroundColor(new Color(157,214,215));
 	
+		cell.setPhrase(new Phrase("ID", font));
+		tabla.addCell(cell);
 		cell.setPhrase(new Phrase("Nombre de usuario", font));
 		tabla.addCell(cell);
 		cell.setPhrase(new Phrase("Nombre", font));
@@ -55,6 +57,7 @@ private List<Usuario> listUsuario;
 			
 		
 			tabla.addCell(String.valueOf(usuario.getIdUsuario()));
+			tabla.addCell(usuario.getNombreUsuario());
 			tabla.addCell(usuario.getNombre());
 			tabla.addCell(usuario.getApellido());
 			tabla.addCell(String.valueOf(usuario.getNroDocumento()));
@@ -75,7 +78,7 @@ private List<Usuario> listUsuario;
 		
 		document.add(new Paragraph("Lista de Usuarios"));
 		
-		PdfPTable tabla = new PdfPTable(6);
+		PdfPTable tabla = new PdfPTable(7);
 		tabla.setWidthPercentage(100);
 		tabla.setSpacingBefore(15);
 		

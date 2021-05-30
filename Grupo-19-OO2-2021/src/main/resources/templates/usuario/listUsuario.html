@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html   xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
 
 <head>
 	<meta charset="ISO-8859-1">
@@ -28,7 +29,6 @@
 			<tr>
 				<th>Nombre</th>
 				<th>Nombre de Usuario</th>
-
 				<th>Apellido</th>
 				<th>Email</th>
 				<th>tipo de Documento</th>
@@ -47,8 +47,9 @@
 				<th th:text="${usuarioModel.nroDocumento}"></th>
 				<th th:text="${usuarioModel.perfil.nombrePerfil}"></th>
 
-				<th><a th:href="@{/usuario/editar/}+${usuarioModel.idUsuario}" class="btn btn-warning">Editar</a> <a <a
-						th:onclick="eliminar([[${usuarioModel.idUsuario}]])" class="btn btn-danger">Eliminar</a>
+				<th> 
+				<a th:href="@{/usuario/editar/}+${usuarioModel.idUsuario}" class="btn btn-warning" >Editar</a> 
+				<a class="btn btn-danger" th:onclick="eliminar([[${usuarioModel.idUsuario}]])" >Eliminar</a>
 			</tr>
 
 		</tbody>
@@ -61,7 +62,9 @@
 
 	<div>
 		<a class="btn btn-success  btn-lg btn-block" th:href="@{/usuario/index}">Menu principal</a>
-		<a class="btn btn-primary btn-lg btn-block" th:href="@{/usuario/new}">Cargar nuevo usuario</a>
+		
+		<a class="btn btn-primary btn-lg btn-block"  th:href="@{/usuario/new}">Cargar nuevo usuario</a>
+		
 		<a class="btn btn-primary btn-lg btn-block" th:href="@{/usuario/usuarios.pdf}">descargar PDF de Usuarios</a>
 
 	</div>

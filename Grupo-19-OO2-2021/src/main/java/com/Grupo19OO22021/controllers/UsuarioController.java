@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +29,6 @@ import com.Grupo19OO22021.services.UsuarioService;
 import com.lowagie.text.DocumentException;
 
 @Controller
-//@PreAuthorize("hasRole('administrador')")
 @RequestMapping("/usuario")
 public class UsuarioController {
 
@@ -54,7 +54,7 @@ public class UsuarioController {
 		return "redirect:/usuario/index";
 	}
 
-	//@PreAuthorize("hasRole('nombre_usuario_angie')")
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/new")
 	public String create(Model model) {
 		model.addAttribute("usuario", new UsuarioModel());
@@ -62,7 +62,7 @@ public class UsuarioController {
 	}
 
 
-	//@PreAuthorize("hasRole('nombre_usuario_angie')")
+	@Secured("ROLE_ADMIN")
 	@PostMapping("/save")
 	public String create(@Valid @ModelAttribute("usuario") UsuarioModel usuarioModel, BindingResult result,
 			ModelMap model) {
@@ -85,6 +85,7 @@ public class UsuarioController {
 		return ViewRouteHelper.NEWUSUARIO;
 	}
 
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/home/{idUsuario}")
 	public String homeUsuario(@ModelAttribute("idUsuario") int idUsuario, Model model) {
 		model.addAttribute("usuario", usuarioService.findById(idUsuario));
@@ -112,7 +113,8 @@ public class UsuarioController {
 		return mav;
 	}
 
-	//@PreAuthorize("hasRole('administrador')")
+	
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/editar/{idUsuario}")
 	public String editar(@ModelAttribute("idUsuario") int idUsuario, Model model) {
 		UsuarioModel usuario = usuarioService.findById(idUsuario);
@@ -120,7 +122,8 @@ public class UsuarioController {
 		return ViewRouteHelper.NEWUSUARIO;
 	}
 
-	//@PreAuthorize("hasRole('administrador')")
+	
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/eliminar/{idUsuario}")
 	public String delete(@ModelAttribute("idUsuario") int idUsuario, Model model) {
 		usuarioService.darDeBaja(idUsuario);
@@ -155,15 +158,4 @@ public class UsuarioController {
 	
 	
 	
-	
-	
-	
-	
-	/*
-	 * @GetMapping("/traerJEP") public String agegar2(Model model) {
-	 * model.addAttribute(JUGADOR_KEY, new Jugador()); return "formEP"; }
-	 * 
-	 * @PostMapping("/formEP") public String formEP(@Validated Jugador j) { return
-	 * "redirect:/jugador/verJugadores/" + j.getPosicion() + "/" + j.getEquipo(); }
-	 */
 }
