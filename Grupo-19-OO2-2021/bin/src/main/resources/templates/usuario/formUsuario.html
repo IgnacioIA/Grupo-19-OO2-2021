@@ -25,34 +25,32 @@
 
 
 </head>
+
 <body id="idFondo"background="https://fondosmil.com/fondo/17010.jpg" >
 
 
 	<div class="container mt-4">
 		<div class="col-sm-6">
-			<form id="idFormulario"th:action="@{/usuario/seve}" th:object=${usuario} method="post">
+			<form id="idFormulario"th:action="@{/usuario/save}" th:object=${usuario} method="post">
+			
+			
 				<div class="card">
 					<div class="card-header">
 						<h3>Usuario</h3>
 						<h4 class="text-success" id="idConfirmacion"th:text="${confirmacion}"></h4>
 				
-						<h4 class="text-danger" id="idExc"th:text="${exception}"></h4>
+						<h5 class="text-danger" id="idExc"th:text="${exception}"></h5>
 					</div>
 					
 					<div class="card-body">
-						<div class="mb-3 row form-group">
-							<label for="idUsuario" class="col-sm-3 col-form-label">Id</label>
-							<div class="col-sm-9">
-								<input type="text" class="form-control"  readonly="readonly" th:field="*{idUsuario}"
-									id="idUsuario">
-								<div id="idDivIdPerfil"> </div>
-							</div>
-						</div>	
+					
+					
 						<div class="mb-3 row form-group" >
 							<label class="col-sm-3 col-form-label" for="idNombreUsuario">Nombre de usuario</label>
 							<div class="col-sm-9" >
 								<input placeholder="Ingrese su nombre de usuario" th:field="*{nombreUsuario}" type="text" class="form-control"
 									id="idNombreUsuario">
+									<div class="alert-danger" th:if="${#fields.hasErrors('nombreUsuario')}" th:errors="*{nombreUsuario}">Name Error</div>
 							</div>
 						</div>	
 														
@@ -61,6 +59,8 @@
 							<div class="col-sm-9" >
 								<input placeholder="Ingrese su nombre" th:field="*{nombre}" type="text" class="form-control"
 									id="idNombre">
+									<div class="alert-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Name Error</div>
+							
 									<div id="idDivNombre"> </div>
 							</div>
 						</div>
@@ -69,6 +69,9 @@
 							<div class="col-sm-9" >
 								<input placeholder="Ingrese su apellido" th:field="*{apellido}" type="text" class="form-control"
 									id="idapellido">
+									<div class="alert-danger" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">Name Error</div>
+			
+									
 									<div id="idDivApellido"> </div>
 							</div>
 						</div>
@@ -79,6 +82,8 @@
 							<div class="col-sm-9" >
 								<input placeholder="Ingrese su password" th:field="*{password}" type="text" class="form-control"
 									id="idPassword">
+									<div class="alert-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</div>
+							
 									<div id="idDivPassword"> </div>
 							</div>
 						</div>
@@ -100,6 +105,8 @@
 							<div class="col-sm-9"  >
 								<input placeholder="Ingrese su DNI" class="form-control"  id="idDni" th:field="*{nroDocumento}"
 									type="number">
+									<div class="alert-danger" th:if="${#fields.hasErrors('nroDocumento')}" th:errors="*{nroDocumento}">Name Error</div>
+							
 									<div id="idDivDni"> </div>
 							</div>
 						</div>
@@ -110,6 +117,8 @@
 							<div class="col-sm-9" >
 								<input placeholder="Ingrese su email"  th:field="*{Email}" value type="text" class="form-control"
 									id="idEmail">
+									<div class="alert-danger" th:if="${#fields.hasErrors('Email')}" th:errors="*{Email}">Name Error</div>
+							
 									<div id="idDivEmail"></div>
 							</div>
 						</div>
@@ -133,6 +142,7 @@
 					<input id="btp" type="submit" value="Guardar" class="btn btn-success">
 
 				</div>
+				<div class="alert alert-danger text-center" th:if="${formErrorMessage}" th:text="${formErrorMessage}">Error MEssage</div>
 			</form>
 		</div>
 	</div>

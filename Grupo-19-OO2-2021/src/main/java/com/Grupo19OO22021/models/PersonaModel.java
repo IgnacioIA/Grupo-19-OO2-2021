@@ -26,7 +26,8 @@ public class PersonaModel {
 	}
 
 
-	public PersonaModel(String nombrePersona, String apellidoPersona, long dniPersona) {
+	public PersonaModel(int idPersona,String nombrePersona, String apellidoPersona, long dniPersona) {
+		this.idPersona=idPersona;
 		this.nombrePersona = nombrePersona;
 		this.apellidoPersona = apellidoPersona;
 		this.dniPersona = dniPersona;

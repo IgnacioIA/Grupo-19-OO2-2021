@@ -23,4 +23,10 @@ public class ViewRouteHelper {
 
 	public final static String NEWRODADO = "rodado/formRodado";
 	
+	
+	
+	//VISTAS PERMISOS
+	public final static String NEWPERMISOPERIODO = "permiso/formPermisoPeriodo";
+	
+	
 }

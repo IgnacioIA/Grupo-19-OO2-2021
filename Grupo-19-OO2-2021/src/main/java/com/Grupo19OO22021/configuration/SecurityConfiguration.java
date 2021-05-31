@@ -30,7 +30,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-				.antMatchers("/include/**","/css/**","/icons/**","/img/**","/js/**","/layer/**","/","/rodado/new","/rodado/save","/home").permitAll()
+				.antMatchers("/include/**","/css/**","/icons/**","/img/**","/js/**","/layer/**","/","/rodado/new","/rodado/save","/home","/permiso/newPermisoPeriodo","/permiso/savePermisoPeriodo").permitAll()
 				//HTTPS QUE PUEDE INGRESAR UN AUDITOR
 			/*
 				.antMatchers("/usuario/new").hasAnyRole("ADMIN")

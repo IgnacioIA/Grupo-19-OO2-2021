@@ -14,8 +14,8 @@ public class PermisoDiarioModel extends PermisoModel {
 
 	}
 
-	public PermisoDiarioModel(Persona pedido, LocalDate fecha, String motivo) {
-		super(pedido, fecha);
+	public PermisoDiarioModel(int idPermiso,Persona pedido, LocalDate fecha, String motivo) {
+		super(idPermiso,pedido, fecha);
 		this.motivo = motivo;
 	}
 

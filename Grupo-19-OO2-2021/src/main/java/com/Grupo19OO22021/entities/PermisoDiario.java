@@ -18,10 +18,11 @@ public class PermisoDiario extends Permiso {
 		
 	}
 
-	public PermisoDiario(Persona pedido, LocalDate fecha,String motivo) {
-		super(pedido, fecha);
+	public PermisoDiario(int idPermiso,Persona pedido, LocalDate fecha,String motivo) {
+		super(idPermiso,pedido, fecha);
 		this.motivo = motivo;
 	}
+	
 
 	public String getMotivo() {
 		return motivo;

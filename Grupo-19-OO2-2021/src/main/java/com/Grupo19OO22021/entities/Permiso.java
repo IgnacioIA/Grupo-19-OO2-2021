@@ -54,8 +54,9 @@ public class Permiso {
 	}
 
 
-	public Permiso(Persona persona, LocalDate fecha) {
+	public Permiso(int idPermiso, Persona persona, LocalDate fecha) {
 		super();
+		this.idPermiso = idPermiso;
 		this.persona = persona;
 		this.fecha = fecha;
 	}

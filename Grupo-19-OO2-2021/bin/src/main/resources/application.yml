@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/tpobjetos2
+    url: jdbc:mysql://localhost:3306/grupo-19-oo2-2021
     username: root
     password:  
   jpa:
@@ -11,3 +11,8 @@ spring:
       dialect: org.hibernate.dialect.MySQL5Dialect
   thymeleaf:
     cache: false
+  mvc:
+     contentnegotiation:
+             media-types:
+                     pdf: application/pdf
+             favor-parameter: true

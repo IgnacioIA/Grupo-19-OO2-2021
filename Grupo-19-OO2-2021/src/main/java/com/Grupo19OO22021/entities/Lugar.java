@@ -33,8 +33,9 @@ public class Lugar {
 	public Lugar() {	
 	}
 
-	public Lugar(String nombreLugar, String codigoPostal) {
+	public Lugar(int idLugar,String nombreLugar, String codigoPostal) {
 		super();
+		this.idLugar=idLugar;
 		this.nombreLugar = nombreLugar;
 		this.codigoPostal = codigoPostal;
 	}

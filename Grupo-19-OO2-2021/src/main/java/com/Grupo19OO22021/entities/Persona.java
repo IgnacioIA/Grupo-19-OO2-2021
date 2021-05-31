@@ -43,8 +43,9 @@ public class Persona {
 	}
 
 
-	public Persona(String nombrePersona, String apellidoPersona, long dniPersona) {
+	public Persona(int idPersona,String nombrePersona, String apellidoPersona, long dniPersona) {
 		super();
+		this.idPersona=idPersona;
 		this.nombrePersona = nombrePersona;
 		this.apellidoPersona = apellidoPersona;
 		this.dniPersona = dniPersona;

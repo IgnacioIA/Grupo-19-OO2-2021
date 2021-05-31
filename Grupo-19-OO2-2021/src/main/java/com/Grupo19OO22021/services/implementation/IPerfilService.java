@@ -12,7 +12,7 @@ public interface IPerfilService  {
 	
 	public PerfilModel findByNombre(String nombre);
 	
-	public PerfilModel insertOrUpdate(PerfilModel usuarioModel);
+	public PerfilModel insertOrUpdate(PerfilModel perfilModel);
 	
 	public boolean remove(int id);
 	public List<Perfil> getAllPerfilSolo();

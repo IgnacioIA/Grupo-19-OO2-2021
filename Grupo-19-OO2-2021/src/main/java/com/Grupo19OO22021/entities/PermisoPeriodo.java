@@ -28,13 +28,12 @@ public class PermisoPeriodo extends Permiso{
 	}
 
 
-	public PermisoPeriodo(Persona pedido, LocalDate fecha,int cantDias, boolean vacaciones, Rodado rodado) {
-		super(pedido, fecha);
+	public PermisoPeriodo(int idPermiso,Persona pedido, LocalDate fecha,int cantDias, boolean vacaciones, Rodado rodado) {
+		super(idPermiso, pedido, fecha);
 		this.cantDias = cantDias;
 		this.vacaciones = vacaciones;
 		this.rodado = rodado;
 	}
-
 
 	public int getCantDias() {
 		return cantDias;

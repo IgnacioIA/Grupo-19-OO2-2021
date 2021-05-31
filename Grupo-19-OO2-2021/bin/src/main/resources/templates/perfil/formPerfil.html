@@ -38,19 +38,15 @@
 				
 					</div>
 					<div class="card-body">
-						<div class="mb-3 row form-group">
-							<label for="idUsuario" class="col-sm-3 col-form-label">Id</label>
-							<div class="col-sm-9">
-								<input type="text" class="form-control"  readonly="readonly" th:field="*{idPerfil}"
-									id="idPerfil">
-							</div>
-						</div>
 
 						<div class="mb-3 row form-group" >
 							<label class="col-sm-3 col-form-label" for="idNombre">Nombre de perfil</label>
 							<div class="col-sm-9" >
 								<input placeholder="Ingrese el nombre del perfil" th:field="*{nombrePerfil}" type="text" class="form-control"
 									id="idNombrePerfil">
+									
+									<div class="alert-danger" th:if="${#fields.hasErrors('nombrePerfil')}" th:errors="*{nombrePerfil}">Name Error</div>
+							
 									<div id="idDivNombrePerfil"> </div>
 							</div>
 						</div>
@@ -64,6 +60,8 @@
 					<input id="btp" type="submit" value="Guardar" class="btn btn-success">
 
 				</div>
+				<div class="alert alert-danger text-center" th:if="${formErrorMessage}" th:text="${formErrorMessage}">Error MEssage</div>
+			
 			</form>
 		</div>
 	</div>

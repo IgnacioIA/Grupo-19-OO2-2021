@@ -18,8 +18,9 @@ public class LugarModel {
     public LugarModel() {	
 	}
 
-	public LugarModel(String nombreLugar, String codigoPostal) {
+	public LugarModel(int idLugar,String nombreLugar, String codigoPostal) {
 		super();
+		this.idLugar=idLugar;
 		this.nombreLugar = nombreLugar;
 		this.codigoPostal = codigoPostal;
 	}

@@ -12,6 +12,7 @@ public class PermisoModel {
 	
 	private Persona pedido;
 	
+	
 	private LocalDate fecha ;
 	
     private List<Lugar> lugares;
@@ -20,11 +21,13 @@ public class PermisoModel {
 		
 	}
 
-	public PermisoModel(Persona pedido, LocalDate fecha) {
+	public PermisoModel(int idPermiso,Persona pedido, LocalDate fecha) {
 		super();
+		this.idPermiso=idPermiso;
 		this.pedido = pedido;
 		this.fecha = fecha;
 	}
+	
 
 	public int getIdPermiso() {
 		return idPermiso;
