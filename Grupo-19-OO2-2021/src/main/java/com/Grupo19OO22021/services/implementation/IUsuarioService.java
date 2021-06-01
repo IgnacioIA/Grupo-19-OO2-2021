@@ -37,5 +37,7 @@ public interface IUsuarioService {
 	List<Usuario> getAllActivo();
 
 	public UsuarioModel upDateBaja(UsuarioModel usuarioModel);
+	public List<Usuario> getAllActivoSinPerfiles();
+		
 
 }

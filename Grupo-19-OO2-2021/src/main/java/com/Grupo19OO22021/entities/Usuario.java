@@ -71,12 +71,12 @@ public class Usuario {
 	@JoinColumn(name="idPerfil", nullable=false)
 	private Perfil perfil;
 
-	/*
+	
 	 @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="idPersona", nullable=false)
 	private Persona persona; 
 	  
-	 */
+	
 	
 	public Usuario() {}
 

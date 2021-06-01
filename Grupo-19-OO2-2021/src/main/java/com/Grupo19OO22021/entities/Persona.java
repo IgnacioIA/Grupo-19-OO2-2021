@@ -34,10 +34,10 @@ public class Persona {
 	private Set<Permiso> permisos = new HashSet<Permiso>();
 
 	
-	/*
+	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="persona")
 	private Set<Usuario> usuarios = new HashSet<Usuario>();
-*/
+
 
 	public Persona() {
 	}
@@ -49,6 +49,24 @@ public class Persona {
 		this.nombrePersona = nombrePersona;
 		this.apellidoPersona = apellidoPersona;
 		this.dniPersona = dniPersona;
+	}
+	public Persona(int idPersona,String nombrePersona, String apellidoPersona, long dniPersona,Set<Usuario> usuarios) {
+		super();
+		this.idPersona=idPersona;
+		this.nombrePersona = nombrePersona;
+		this.apellidoPersona = apellidoPersona;
+		this.dniPersona = dniPersona;
+		this.usuarios = usuarios;
+	}
+
+	
+	public Set<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+
+	public void setUsuarios(Set<Usuario> usuarios) {
+		this.usuarios = usuarios;
 	}
 
 

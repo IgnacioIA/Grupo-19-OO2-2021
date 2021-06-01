@@ -68,6 +68,17 @@ public class UsuarioService implements IUsuarioService ,UserDetailsService {
 		List<Usuario> list = usuarioRepository.findAllByActivo(true);
 		return list;
 	}
+	@Override
+	public List<Usuario> getAllActivoSinPerfiles() {
+		List<Usuario> list = getAllActivo();
+		List<Usuario> l = new ArrayList<>();
+		for (int i = 0; i < list.size(); i++) {
+			Usuario usuario= list.get(i);
+			usuario.setPerfil(null);
+			l.add(usuario);
+		}
+		return l;
+	}
 	
 	
 	@Override
