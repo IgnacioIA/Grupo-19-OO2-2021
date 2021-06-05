@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html th="http//:www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Listado: Permisos por Fecha</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+
+<body id="idFondo" background="https://fondosmil.com/fondo/17010.jpg">
+	<table id="idtabla" class="table table-striped bg-white">
+		<thead>
+			<tr>
+				<th>id del permiso </th>
+				<th>Fecha</th>
+			</tr>
+		</thead>
+		<tbody th:each="permiso : ${permisos}">
+			<tr>
+				<th th:text="${permiso.idPermiso}"> </th>
+				<th th:text="${permiso.fecha}"> </th>
+				
+			</tr>
+
+		</tbody>
+	</table>
+	<div>
+		<br />
+		<a class="btn btn-success  btn-lg btn-block" th:href="@{/homeUsuario}">Menu principal</a>
+	
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+		crossorigin="anonymous"></script>
+	<!-- JQuery -->
+	<script src="https://code.jquery.com/jquery-3.5.1.js"
+		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
