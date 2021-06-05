@@ -82,10 +82,7 @@ public class PermisoController {
 		Persona u2=new  Persona(u.getIdPersona(), u.getNombrePersona(), u.getApellidoPersona(), u.getDniPersona());
 		
 		PermisoPeriodo p= new PermisoPeriodo(0,u2,LocalDate.now(),0,false,new Rodado(0, "dominio", "auto"));
-		//Set<Usuario> list = p.getPersona().getUsuarios();
-		//list.add(usuarioConverter.modelToEntity(u.getUsuarios().get));
 		
-		//p.getPedido().setUsuarios(list);
 		model.addAttribute("permisoPeriodo", p);
 		return "permiso/formPermisoPeriodo";
 	}
@@ -103,32 +100,11 @@ public class PermisoController {
 		permisoPeriodo.setLugares(list);
 		permisoService.insertOrUpdatePermisoPeriodo(permisoPeriodo);
 	
-		//PermisoPeriodo permisoPeriodo = 
-		/*if (result.hasErrors()) {   //SI OCURRE UN ERROR
-			model.addAttribute("permisoPeriodo", permisoPeriodo);
-			model.addAttribute("confirmacion", "Operacion DENEGADA");
-		} else {
-			try {
-			permisoService.insertOrUpdatePermisoPeriodo(permisoPeriodo);
-			model.addAttribute("permisoPeriodo", new PermisoPeriodo());
-			model.addAttribute("confirmacion", "Operacion sobre el Permiso exitosa");
-		
-		} catch (Exception e) {
-			model.addAttribute("formErrorMessage", e.getMessage());
-			model.addAttribute("permisoPeriodo", permisoPeriodo);
-			
-		}
-		}
-		*/		
 		return "home";
 	}
-	/*
-	public PermisoPeriodo cargarPP(PermisoPeriodo permisoPeriodo) {
-		
-		PermisoPeriodo p = new PermisoPeriodo()
-	}
-	*/
-	//-------------------------------- PERMISO DIARIO
+	
+	
+	
 	@GetMapping("/newPermisoDiario")
 	public String createpd(Model model) {
 		model.addAttribute("permisoDiario", new PermisoDiario());
@@ -148,13 +124,7 @@ public class PermisoController {
 		//String[] array = persona.getNombrePersona().split(",");
 		Persona u = personaService.findById(persona.getIdPersona());
 		Persona u2=new  Persona(u.getIdPersona(), u.getNombrePersona(), u.getApellidoPersona(), u.getDniPersona());
-		//Persona u3=new  Persona();
-		//u3.setIdPersona(persona.getIdPersona());
 		PermisoDiario p= new PermisoDiario(0,u2,LocalDate.now(),"");
-		//Set<Usuario> list = p.getPersona().getUsuarios();
-		//list.add(usuarioConverter.modelToEntity(u.getUsuarios().get));
-		
-		//p.getPedido().setUsuarios(list);
 		model.addAttribute("permisoDiario", p);
 		return "permiso/formPermisoDiario";
 	}
@@ -178,62 +148,41 @@ public class PermisoController {
 	public String createPD(@ModelAttribute("permisoDiario") PermisoDiario permisoDiario,@ModelAttribute("idPersona") int idPersona,Model model) {
 		permisoDiario.setPersona(personaService.findById(idPersona));
 		permisoService.insertOrUpdatePermisoDiario(permisoDiario);
-	
-		//PermisoPeriodo permisoPeriodo = 
-		/*if (result.hasErrors()) {   //SI OCURRE UN ERROR
-			model.addAttribute("permisoPeriodo", permisoPeriodo);
-			model.addAttribute("confirmacion", "Operacion DENEGADA");
-		} else {
-			try {
-			permisoService.insertOrUpdatePermisoPeriodo(permisoPeriodo);
-			model.addAttribute("permisoPeriodo", new PermisoPeriodo());
-			model.addAttribute("confirmacion", "Operacion sobre el Permiso exitosa");
 		
-		} catch (Exception e) {
-			model.addAttribute("formErrorMessage", e.getMessage());
-			model.addAttribute("permisoPeriodo", permisoPeriodo);
-			
-		}
-		}
-		*/		
 		return "home";
 	}
 	
-	//-----------------primera consulta
-	//metodo 1 Permiso para auditor
+	
+	
 	@Secured("ROLE_USER")
 	@GetMapping("/asignarPersonaParaPermiso")
 	public String asignarPermisoP(Model model) {
 		model.addAttribute("persona",new Persona());
 		return "permiso/formAsignaPersonaParaPermiso";
 	}
-	//metodo 2 Permiso es para todos
+	
+	
 	@GetMapping("/asignarPersonaParaPermiso2")
 	public String asignarPermisoP2(Model model) {
 		model.addAttribute("persona",new Persona());
 		return "permiso/formAsignaPersonaParaPermiso";
 	}
 	
-
-	//@Secured("ROLE_USER")
+	
+	
 	@PostMapping("/traerPermisosPorPersona")
 	public String traerPermisoPorPersona(@Valid @ModelAttribute("persona") Persona persona, BindingResult result,ModelMap model) {
-		//String[] array = persona.getNombrePersona().split(",");
+		
 		Persona u = personaService.findById(persona.getIdPersona());
 		Persona u2=new  Persona(u.getIdPersona(), u.getNombrePersona(), u.getApellidoPersona(), u.getDniPersona());
-		//Persona u3=new  Persona();
-		//u3.setIdPersona(persona.getIdPersona());
+	
 		List<Permiso> p= permisoService.findByPermisoPorPersona(persona.getIdPersona());
-		//Set<Usuario> list = p.getPersona().getUsuarios();
-		//list.add(usuarioConverter.modelToEntity(u.getUsuarios().get));
 		
-		//p.getPedido().setUsuarios(list);
 		model.addAttribute("permisos", p);
 		return "permiso/listPermisosPorPersona";
 	}
 	
 	
-	//-----------------Segunda consulta
 		@Secured("ROLE_USER")
 		@GetMapping("/asignarRodadoParaPermiso")
 		public String asignarPermisoPR(Model model) {
@@ -241,25 +190,19 @@ public class PermisoController {
 			return "permiso/formAsignaRodadoParaPermiso";
 		}
 		
-		//@Secured("ROLE_USER")
 		@PostMapping("/traerPermisosPorRodado")
 		public String traelkrPermisoPorRodado(@Valid @ModelAttribute("rodado") Rodado rodado, BindingResult result,ModelMap model) {
-			//String[] array = persona.getNombrePersona().split(",");
+
 			RodadoModel u = rodadoService.findById(rodado.getIdRodado());
 			
-			//Persona u2=new  Persona(u.getIdPersona(), u.getNombrePersona(), u.getApellidoPersona(), u.getDniPersona());
-			//Persona u3=new  Persona();
-			//u3.setIdPersona(persona.getIdPersona());
 			Set<PermisoPeriodo> p= u.getPermisoPeriodos();
-			//List<Permiso> p= permisoService.findByPermisoPorPersona(persona.getIdPersona());
-			//Set<Usuario> list = p.getPersona().getUsuarios();
-			//list.add(usuarioConverter.modelToEntity(u.getUsuarios().get));
 			
-			//p.getPedido().setUsuarios(list);
 			model.addAttribute("permisos", p);
 			return "permiso/listPermisosPorRodado";
 		}
-	//----------------3 consulta
+		
+		
+		
 		@Secured("ROLE_USER")
 		@GetMapping("/asignarDosFechasParaTraerPermiso")
 		public String asignarFechas(Model model) {
@@ -267,22 +210,14 @@ public class PermisoController {
 			return "permiso/formAsignaDobleFecha";
 		}
 		
-		//@Secured("ROLE_USER")
+		
+		
 		@PostMapping("/traerPermisosPorDobleFecha")
 		public String traerPermisoPorDobleFecha(@Valid @ModelAttribute("dobleFechas") DobleFechas dobleFechas, BindingResult result,ModelMap model) {
-			//String[] array = persona.getNombrePersona().split(",");
-			//RodadoModel u = rodadoService.findById(rodado.getIdRodado());
 			
-			//Persona u2=new  Persona(u.getIdPersona(), u.getNombrePersona(), u.getApellidoPersona(), u.getDniPersona());
-			//Persona u3=new  Persona();
-			//u3.setIdPersona(persona.getIdPersona());
-			//Set<PermisoPeriodo> p= u.getPermisoPeriodos();
-			//List<Permiso> p= permisoService.findByPermisoPorPersona(persona.getIdPersona());
-			//Set<Usuario> list = p.getPersona().getUsuarios();
-			//list.add(usuarioConverter.modelToEntity(u.getUsuarios().get));
 			DobleFechas d= dobleFechas;
 			List<Permiso> p = permisoService.traerPermisosEntreFechas(dobleFechas);
-			//p.getPedido().setUsuarios(list);
+		
 			model.addAttribute("permisos", p);
 			return "permiso/listPermisosPorFecha";
 		}
@@ -294,19 +229,10 @@ public class PermisoController {
 			return "permiso/formAsignaDobleFechaParaLugares";
 		}
 		
-		//@Secured("ROLE_USER")
+		
 		@PostMapping("/traerPermisosPorDobleFechaPorLugares")
 		public String traerPermisoPorDobleFechaXLugares(@Valid @ModelAttribute("dobleFechasPorLugares") DobleFechasYLugares dobleFechasPorLugares, BindingResult result,ModelMap model) {
-			//String[] array = persona.getNombrePersona().split(",");
-			//RodadoModel u = rodadoService.findById(rodado.getIdRodado());
 			
-			//Persona u2=new  Persona(u.getIdPersona(), u.getNombrePersona(), u.getApellidoPersona(), u.getDniPersona());
-			//Persona u3=new  Persona();
-			//u3.setIdPersona(persona.getIdPersona());
-			//Set<PermisoPeriodo> p= u.getPermisoPeriodos();
-			//List<Permiso> p= permisoService.findByPermisoPorPersona(persona.getIdPersona());
-			//Set<Usuario> list = p.getPersona().getUsuarios();
-			//list.add(usuarioConverter.modelToEntity(u.getUsuarios().get));
 			DobleFechasYLugares d= dobleFechasPorLugares;
 			List<Permiso> p = permisoService.traerPermisosEntreFechasXlugares(d);
 			//p.getPedido().setUsuarios(list);

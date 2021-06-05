@@ -58,12 +58,13 @@ public class PerfilController {
 			model.addAttribute("formErrorMessage", e.getMessage());
 			model.addAttribute("perfil", perfilModel);
 			
-			//return "redirect:/perfil/new";
 		}
 		}
 				
 		return ViewRouteHelper.NEWPERFIL;
 	}
+	
+	
 	@Secured("ROLE_ADMIN")
 	@GetMapping("/home/{idPerfil}")
 	public String homePerfil(@ModelAttribute("idPerfil") int idPerfil,Model model) {
@@ -71,11 +72,10 @@ public class PerfilController {
 		return "homePerfil";
 	}
 	
+	
 	@GetMapping("/list")
 	public ModelAndView listAllJugador() {
-		//GeneratePDF document = new GeneratePDF(new PDDocument());
 		try {
-			//PDDocument documento = document.generatePDCListPerfil(perfilService.getAll());
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -104,11 +104,6 @@ public class PerfilController {
 	public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException {
 		response.setContentType("aplication/pdf");
 		
-		
-		//DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
-		//String currentDateTime = dateFormatter.format(new Date(0, 0, 0));
-		
-		
 		String headerKey = "Content-Disposition";
 		String headerValue = "attachment; filename=perfil.pdf";
 		
@@ -116,16 +111,12 @@ public class PerfilController {
 		
 		List<Perfil> listPerfil = perfilService.getAll();
 		
-		
 		GeneratePDF pdf =  new GeneratePDF(listPerfil);
 		pdf.export(response);
 		
 		
 		
 	}
-	
-	
-	
 	
 	
 	

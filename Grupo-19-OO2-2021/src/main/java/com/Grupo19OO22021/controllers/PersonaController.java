@@ -93,25 +93,5 @@ public class PersonaController {
 
 		return ViewRouteHelper.NEWPERSONA;
 	}
-	/*
-	 * @GetMapping("/home/{idPerfil}") public String
-	 * homePerfil(@ModelAttribute("idPerfil") int idPerfil,Model model) {
-	 * model.addAttribute("perfil", perfilService.findById(idPerfil)); return
-	 * "homePerfil"; }
-	 * 
-	 * @GetMapping("/list") public ModelAndView listAllJugador() { //GeneratePDF
-	 * document = new GeneratePDF(new PDDocument()); try { //PDDocument documento =
-	 * document.generatePDCListPerfil(perfilService.getAll()); } catch (Exception e)
-	 * { System.out.println(e.getMessage()); } ModelAndView mav = new
-	 * ModelAndView(ViewRouteHelper.LISTP); mav.addObject("perfiles",
-	 * perfilService.getAll()); return mav; }
-	 * 
-	 * @Secured("ROLE_ADMIN")
-	 * 
-	 * @GetMapping("/editar/{idPerfil}") public String
-	 * editar(@ModelAttribute("idPerfil") int idPerfil, Model model) { PerfilModel
-	 * perfil= perfilService.findById(idPerfil);
-	 * model.addAttribute("perfil",perfil); return ViewRouteHelper.NEWPERFIL; }
-	 */
-
+	
 }

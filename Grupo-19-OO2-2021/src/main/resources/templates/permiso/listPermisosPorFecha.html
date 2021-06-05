@@ -13,12 +13,14 @@
 		<thead>
 			<tr>
 				<th>id del permiso </th>
+				<th>Persona</th>
 				<th>Fecha</th>
 			</tr>
 		</thead>
 		<tbody th:each="permiso : ${permisos}">
 			<tr>
 				<th th:text="${permiso.idPermiso}"> </th>
+				<th th:text="${permiso.persona.nombreUsuarioPersona}"> </th>
 				<th th:text="${permiso.fecha}"> </th>
 				
 			</tr>

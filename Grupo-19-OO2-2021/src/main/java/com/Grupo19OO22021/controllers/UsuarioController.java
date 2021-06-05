@@ -94,14 +94,9 @@ public class UsuarioController {
 
 	@GetMapping("/index")
 	public String indexUsuario(/* @ModelAttribute("idUsuario") int idUsuario, */Model model) {
-		// HashMap<String, String> has=
-		// SecurityContextHolder.getContext().getAuthentication().getPrincipal().getClass();
 		String admin = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
 		String[] name = admin.substring(61, 80).split(",");
 		UsuarioModel usuario = usuarioService.findByNombreUsuario(name[0]);
-		// User usuario = (User)
-		// SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		// usuario.get
 		model.addAttribute("usuario", usuario);
 		return ViewRouteHelper.HOMEU;
 	}
@@ -135,12 +130,6 @@ public class UsuarioController {
 	@GetMapping("/usuarios.pdf")
 	public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException {
 		response.setContentType("aplication/pdf");
-		
-		
-		//DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
-		//String currentDateTime = dateFormatter.format(new Date(0, 0, 0));
-		
-		
 		String headerKey = "Content-Disposition";
 		String headerValue = "attachment; filename=Usuarios.pdf";
 		
