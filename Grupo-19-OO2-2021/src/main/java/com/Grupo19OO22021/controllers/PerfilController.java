@@ -69,7 +69,7 @@ public class PerfilController {
 	@GetMapping("/home/{idPerfil}")
 	public String homePerfil(@ModelAttribute("idPerfil") int idPerfil,Model model) {
 		model.addAttribute("perfil", perfilService.findById(idPerfil));
-		return "homePerfil";
+		return ViewRouteHelper.HOMEP;
 	}
 	
 	

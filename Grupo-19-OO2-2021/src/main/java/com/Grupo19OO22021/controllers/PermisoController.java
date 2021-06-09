@@ -84,7 +84,7 @@ public class PermisoController {
 		PermisoPeriodo p= new PermisoPeriodo(0,u2,LocalDate.now(),0,false,new Rodado(0, "dominio", "auto"));
 		
 		model.addAttribute("permisoPeriodo", p);
-		return "permiso/formPermisoPeriodo";
+		return ViewRouteHelper.NEWPERMISOPERIODO;
 	}
 	
 	
@@ -100,7 +100,7 @@ public class PermisoController {
 		permisoPeriodo.setLugares(list);
 		permisoService.insertOrUpdatePermisoPeriodo(permisoPeriodo);
 	
-		return "home";
+		return ViewRouteHelper.HOME ;
 	}
 	
 	
@@ -108,14 +108,14 @@ public class PermisoController {
 	@GetMapping("/newPermisoDiario")
 	public String createpd(Model model) {
 		model.addAttribute("permisoDiario", new PermisoDiario());
-		return "permiso/formPermisoDiario";
+		return ViewRouteHelper.NEWPERMISODIARIO ;
 	}
 	
 	
 	@GetMapping("/asignarPermisoDiario")
 	public String asignarPermisoDiario(Model model) {
 		model.addAttribute("persona",new Persona());
-		return "permiso/formAsignaPersonaPermisoDiario";
+		return ViewRouteHelper.ASIGNOPDIARIO;
 	}
 	
 	
@@ -126,7 +126,7 @@ public class PermisoController {
 		Persona u2=new  Persona(u.getIdPersona(), u.getNombrePersona(), u.getApellidoPersona(), u.getDniPersona());
 		PermisoDiario p= new PermisoDiario(0,u2,LocalDate.now(),"");
 		model.addAttribute("permisoDiario", p);
-		return "permiso/formPermisoDiario";
+		return ViewRouteHelper.NEWPERMISODIARIO;
 	}
 	
 	@PostMapping("/savePermisoDiario/{idPersona}")
@@ -139,7 +139,7 @@ public class PermisoController {
 		list.add(hasta);
 		permisoDiario.setLugares(list);
 		permisoService.insertOrUpdatePermisoDiario(permisoDiario);
-		return "home";
+		return ViewRouteHelper.HOME;
 	}
 	
 	
@@ -149,7 +149,7 @@ public class PermisoController {
 		permisoDiario.setPersona(personaService.findById(idPersona));
 		permisoService.insertOrUpdatePermisoDiario(permisoDiario);
 		
-		return "home";
+		return ViewRouteHelper.HOME;
 	}
 	
 	
@@ -158,14 +158,14 @@ public class PermisoController {
 	@GetMapping("/asignarPersonaParaPermiso")
 	public String asignarPermisoP(Model model) {
 		model.addAttribute("persona",new Persona());
-		return "permiso/formAsignaPersonaParaPermiso";
+		return ViewRouteHelper.ASIGNOPERSONAAPERMISO;
 	}
 	
 	
 	@GetMapping("/asignarPersonaParaPermiso2")
 	public String asignarPermisoP2(Model model) {
 		model.addAttribute("persona",new Persona());
-		return "permiso/formAsignaPersonaParaPermiso";
+		return ViewRouteHelper.ASIGNOPERSONAAPERMISO;
 	}
 	
 	
@@ -179,7 +179,7 @@ public class PermisoController {
 		List<Permiso> p= permisoService.findByPermisoPorPersona(persona.getIdPersona());
 		
 		model.addAttribute("permisos", p);
-		return "permiso/listPermisosPorPersona";
+		return ViewRouteHelper.LISTPERMXPERS;
 	}
 	
 	
@@ -187,7 +187,7 @@ public class PermisoController {
 		@GetMapping("/asignarRodadoParaPermiso")
 		public String asignarPermisoPR(Model model) {
 			model.addAttribute("rodado",new Rodado());
-			return "permiso/formAsignaRodadoParaPermiso";
+			return ViewRouteHelper.ASIGNORODADOAPER;
 		}
 		
 		@PostMapping("/traerPermisosPorRodado")
@@ -198,7 +198,7 @@ public class PermisoController {
 			Set<PermisoPeriodo> p= u.getPermisoPeriodos();
 			
 			model.addAttribute("permisos", p);
-			return "permiso/listPermisosPorRodado";
+			return ViewRouteHelper.LISTPERMXRODADO;
 		}
 		
 		
@@ -207,7 +207,7 @@ public class PermisoController {
 		@GetMapping("/asignarDosFechasParaTraerPermiso")
 		public String asignarFechas(Model model) {
 			model.addAttribute("dobleFechas",new DobleFechas());
-			return "permiso/formAsignaDobleFecha";
+			return ViewRouteHelper.ASIGNORODOBLEFECHA;
 		}
 		
 		
@@ -219,14 +219,14 @@ public class PermisoController {
 			List<Permiso> p = permisoService.traerPermisosEntreFechas(dobleFechas);
 		
 			model.addAttribute("permisos", p);
-			return "permiso/listPermisosPorFecha";
+			return ViewRouteHelper.LISTPERMXFECHA;
 		}
 		 //-----
 		@Secured("ROLE_USER")
 		@GetMapping("/traerPermisosPorFechaYLugar")
 		public String asignarFechasXlugar(Model model) {
 			model.addAttribute("dobleFechasPorLugares",new DobleFechasYLugares());
-			return "permiso/formAsignaDobleFechaParaLugares";
+			return ViewRouteHelper.LISTPERMXFECHAXLUGAR;
 		}
 		
 		
@@ -237,6 +237,6 @@ public class PermisoController {
 			List<Permiso> p = permisoService.traerPermisosEntreFechasXlugares(d);
 			//p.getPedido().setUsuarios(list);
 			model.addAttribute("permisos", p);
-			return "permiso/listPermisosPorFechaXlugares";
+			return ViewRouteHelper.LISTPERMXFECXLUGAR;
 		}
 }

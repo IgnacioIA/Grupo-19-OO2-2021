@@ -12,7 +12,6 @@
 	<table id="idtabla" class="table table-striped bg-white">
 		<thead>
 			<tr>
-				<th>id del permiso </th>
 				<th>Fecha</th>
 				<th>nombre de la persona del permiso</th>
 				<th>vehiculo</th>
@@ -20,7 +19,6 @@
 		</thead>
 		<tbody th:each="permiso : ${permisos}">
 			<tr>
-				<th th:text="${permiso.idPermiso}"> </th>
 				<th th:text="${permiso.fecha}"> </th>
 				<th th:text="${permiso.pedido.nombrePersona}"> </th>
 				<th th:text="${permiso.rodado.vehiculo}"> </th>
