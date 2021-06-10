@@ -41,8 +41,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 						"/permiso/traerPermisosPorDobleFecha",
 						"/permiso/formAsignaPersonaPermisoDiario",
 						"/lug",
-						"/permiso/asignarPersonaParaPermiso2"
-					
+						"/permiso/asignarPersonaParaPermiso2",
+						"/createCommonQRCode"
+						
 						).permitAll()
 				//HTTPS QUE PUEDE INGRESAR UN AUDITOR
 			/*
