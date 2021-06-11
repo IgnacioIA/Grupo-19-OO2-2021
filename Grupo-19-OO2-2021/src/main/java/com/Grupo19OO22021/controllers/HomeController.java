@@ -33,7 +33,7 @@ public class HomeController {
 	public String prueba(@ModelAttribute("idPermiso") int idPermiso,Model model) {
 		Permiso p = permisoService.findById2(idPermiso);
 		List<Lugar> l = p.getLugares();
-		String url = "https://franmsn2011.github.io/index/"
+		String url = "https://franmsn2011.github.io/index.html?"
 				+ "nombre="+p.getPersona().getNombrePersona()+
 				"&fecha="+p.getFecha()+
 				"&desde="+p.getLugares().get(0).getNombreLugar()+
