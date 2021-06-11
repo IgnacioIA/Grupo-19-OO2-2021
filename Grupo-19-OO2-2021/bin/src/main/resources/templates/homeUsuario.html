@@ -37,21 +37,22 @@
 
 		<h1 class="display-1 bg-primary">Home Usuario</h1>
 		<h2>Bienvenido </h2>
-			<a th:href="@{/perfil/list}" class="btn btn-primary" id="id1">lista de perfiles</a> 
-			<br />
-		<a th:href="@{/usuario/list}"class="btn btn-primary">lista de Usuarios</a>
-		<br />
-		<a th:href="@{/perfil/new/}" class="btn btn-info">agregar perfil nuevo</a>
-	<br />
-	<a th:href="@{/usuario/new/}" class="btn btn-info">agregar usuario nuevo</a>
-	<br />
-	<a th:href="@{/permiso/asignarRodadoParaPermiso}" class="btn btn-warning">traer Permiso Por rodado</a>
+			<a th:href="@{/perfil/list}" class="btn btn-primary" id="id1">Lista de perfiles</a> 
+		<a th:href="@{/usuario/list}"class="btn btn-primary">Lista de Usuarios</a>
+		<a th:href="@{/perfil/new/}" class="btn btn-info">Agregar perfil nuevo</a>
+	<a th:href="@{/usuario/new/}" class="btn btn-info">Agregar usuario nuevo</a>
+	<a class="btn btn-warning" th:href="@{/permiso/asignarPersonaParaPermiso}">Traer permisos por persona </a>
+	<a th:href="@{/permiso/asignarRodadoParaPermiso}" class="btn btn-warning">Traer Permiso Por rodado</a>
+	<a th:href="@{/permiso/asignarDosFechasParaTraerPermiso}" class="btn btn-warning">Traer Permiso entre 2 fechas</a>
+	<a th:href="@{/permiso/traerPermisosPorFechaYLugar}" class="btn btn-warning">Traer Permiso entre 2 fechas por lugar</a>
+	
 	
 		</div>
 		<!-- <a th:href="@{/posicion/list}" class="btn btn-primary" id="id1">lista
 			de posiciones</a> --> 
 	</div>
-	<a th:href="@{/usuario/logout/}" class="btn btn-info">cerrar sesion</a>
+	<a th:href="@{/usuario/logout/}" class="btn btn-info">Cerrar sesion</a>
+	<a th:href="@{/}" class="btn btn-primary" id="idHome">Ir a Home</a>
 	
 
 

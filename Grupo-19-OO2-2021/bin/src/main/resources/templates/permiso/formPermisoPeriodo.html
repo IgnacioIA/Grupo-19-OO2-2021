@@ -25,6 +25,7 @@
  <script id="ruta" th:inline="javascript"> var contextRoot = /*[[@{/}]]*/ ''; </script>
 
 <script src="/jQuery/permiso-rodado.js"></script>
+<script src="/jQuery/permiso-lugar.js"></script>
 </head>
 
 
@@ -48,13 +49,34 @@
                         <div class="mb-3 row form-group" >
 							<label class="col-sm-3 col-form-label" for="idFecha">Fecha</label>
 							<div class="col-sm-9" >
-								<input placeholder="Ingrese la fecha de salida" th:field="*{fecha}" type="text" class="form-control"
+								<input placeholder="Ingrese la fecha de salida" th:field="*{fecha}" type="date" class="form-control"
 									id="idFecha">
 							
 									
 							</div>
 						</div>
-						
+						<div class="mb-3 row form-group">
+							<label for="idLugar" class="col-sm-3 col-form-label">Lugar</label>
+							<div class="col-sm-9">
+								<select id="idLugar" type="text"
+									th:field="*{lugares[0].idLugar}"
+									class="form-select form-select-lg mb-3 ">
+								</select>
+							</div>
+							<input th:field="*{lugares[0].idLugar}" type="int"
+								class="form-control d-none" id="idLug">
+						</div>
+						<div class="mb-3 row form-group">
+							<label for="idLugar1" class="col-sm-3 col-form-label">Hasta</label>
+							<div class="col-sm-9">
+								<select id="idLugar1" type="text"
+									th:field="*{lugares[1].idLugar}"
+									class="form-select form-select-lg mb-3 ">
+								</select>
+							</div>
+							<input th:field="*{lugares[1].idLugar}" type="int"
+								class="form-control d-none" id="idLug1">
+						</div>
 
 
 						<div class="mb-3 row form-group" >

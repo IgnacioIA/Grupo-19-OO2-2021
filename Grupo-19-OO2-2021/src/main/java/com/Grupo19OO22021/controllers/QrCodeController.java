@@ -1,56 +1,39 @@
 package com.Grupo19OO22021.controllers;
 
-import java.io.File;
 
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletResponse;
 
+import java.awt.image.BufferedImage;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.BufferedImageHttpMessageConverter;
+import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.Grupo19OO22021.services.QRCodeUtil;
 
 @Controller
+@RequestMapping("/barcodes")
+@RestController
 public class QrCodeController {
-	/**
-     * Generar código QR ordinario según url
-     */
-    @RequestMapping(value = "/createCommonQRCode")
-    public void createCommonQRCode(HttpServletResponse response, String url) throws Exception {
-        ServletOutputStream stream = null;
-        try {
-            stream = response.getOutputStream();
-            // Usa herramientas para generar código QR
-            QRCodeUtil.encode(url, stream);
-        } catch (Exception e) {
-            e.getStackTrace();
-        } finally {
-            if (stream != null) {
-                stream.flush();
-                stream.close();
-            }
-        }
-    }
+	
+	@PostMapping(value = "/zxing/qrcode", produces = MediaType.IMAGE_PNG_VALUE)
+	public ResponseEntity<BufferedImage> zxingQRCode (@RequestBody String barcode) throws Exception{
+		return SuccessResponse(QRCodeUtil.generateQRCode(barcode));
+	}
 
-    /**
-           * Generar código QR con logo según url
-     */
-    @RequestMapping(value = "/createLogoQRCode")
-    public void createLogoQRCode(HttpServletResponse response, String url) throws Exception {
-        ServletOutputStream stream = null;
-        try {
-            stream = response.getOutputStream();
-            String logoPath = Thread.currentThread().getContextClassLoader().getResource("").getPath() 
-                    + "templates" + File.separator + "logo.jpg";
-            // Usa herramientas para generar código QR
-            QRCodeUtil.encode(url, logoPath, stream, true);
-        } catch (Exception e) {
-            e.getStackTrace();
-        } finally {
-            if (stream != null) {
-                stream.flush();
-                stream.close();
-            }
-        }
-    }
+	private ResponseEntity<BufferedImage> SuccessResponse(BufferedImage image) {
+		return new ResponseEntity<>(image,HttpStatus.OK);
+	}
+	
+	@Bean
+	public HttpMessageConverter<BufferedImage> createImageHttpMessageConverter(){
+		return new BufferedImageHttpMessageConverter();
+	}
 }

@@ -13,6 +13,10 @@ public class HomeController {
 		return "home";
 	}
 	
+	@GetMapping("/irPrueba")
+	public String prueba() {
+		return "prueba";
+	}
 		@GetMapping("/homeUsuario")
 	public String mostrarHomeUsuario() {
 		return ViewRouteHelper.HOMEU;

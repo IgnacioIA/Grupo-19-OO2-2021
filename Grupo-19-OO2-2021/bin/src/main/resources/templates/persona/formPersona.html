@@ -55,7 +55,7 @@
 								de persona</label>
 							<div class="col-sm-9">
 								<input placeholder="Ingrese su nombre"
-									th:field="*{nombrePersona}" type="text" class="form-control"
+									th:field="*{nombrePersona}" readonly="readonly" type="text" class="form-control"
 									id="idNombrePersona">
 								<!--  <div class="alert-danger" th:if="${#fields.hasErrors('nombreUsuario')}" th:errors="*{nombrePersona}">Name Error</div>
 							 -->
@@ -68,7 +68,7 @@
 								Persona</label>
 							<div class="col-sm-9">
 								<input placeholder="Ingrese su apellido"
-									th:field="*{apellidoPersona}" type="text" class="form-control"
+									th:field="*{apellidoPersona}" readonly="readonly" type="text" class="form-control"
 									id="idApellido">
 								<!-- <div class="alert-danger" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellidoPersona}">Name Error</div>
 			 -->
@@ -83,7 +83,7 @@
 							<label class="col-sm-3 col-form-label" for="idDniPersona">DNI</label>
 							<div class="col-sm-9">
 								<input placeholder="Ingrese su DNI" class="form-control"
-									id="idDniPersona" th:field="*{dniPersona}" type="number">
+									id="idDniPersona" th:field="*{dniPersona}"  readonly="readonly"type="number">
 								<!--  <div class="alert-danger" th:if="${#fields.hasErrors('nroDocumento')}" th:errors="*{nroDocumento}">Name Error</div>
 							-->
 								<div id="idDivDniPersona"></div>
@@ -95,7 +95,7 @@
 								de usuario</label>
 							<div class="col-sm-9">
 								<input placeholder="Ingrese su nombre de usuario"
-									th:field="*{nombreUsuarioPersona}" type="text"
+									th:field="*{nombreUsuarioPersona}" readonly="readonly"type="text"
 									class="form-control" id="idNombreUsuario">
 								<!--  <div class="alert-danger" th:if="${#fields.hasErrors('nombreUsuario')}" th:errors="*{nombrePersona}">Name Error</div>
 							<div class="formu">
@@ -105,32 +105,10 @@
 							 -->
 							</div>
 						</div>
-					<div class="mb-3 row form-group">
-							<nav>
-								<ul id="menu">
-
-									<li><span>guardar persona y cargar permiso
-											periodo</span>
-										<ul>
-											<li><input id="btp1" type="submit" name="botonPP"value="siguiente"
-												class="btn btn-success"></li>
-										</ul></li>
-
-									<li><span >guardar persona y cargar permiso
-											Periodo</span>
-										<ul>
-											<li><input id="btp2" 
-											type="submit" value="siguiente"
-												class="btn btn-success"></li>
-										</ul></li>
-
-								</ul>
-							</nav>
-						</div>
-
+					
 
 					</div>
-					<input id="btp" type="submit" value="No necesito Permiso"
+					<input id="btp" type="submit" value="Guardar"
 						class="btn btn-success">
 					<div class="card-footer"></div>
 
@@ -144,6 +122,6 @@
 			</form>
 		</div>
 	</div>
-	<!--<a href="#" id="backLink2" class="btn btn-success" >Atras</a>  -->
-</body>
+	<a class="btn btn-success btn btn-success  btn-lg btn-block" th:href="@{/}">Menu Principal</a>
+	</body>
 </html>

@@ -33,7 +33,7 @@
 
 	<div class="container mt-4">
 		<div class="col-sm-6">
-			<form id="idFormulario" th:action="@{/permiso/traerPermisosPorPersona}"
+			<form id="idFormulario" th:action="@{/permiso/traerPermisosPorRodado}"
 				th:object=${rodado} method="post">
 
 
@@ -74,7 +74,7 @@
 		</div>
 	</div>
 
-	<a class="btn btn-success  btn-lg btn-block" th:href="@{/}">Menu</a>
+	<a class="btn btn-success  btn-lg btn-block" th:href="@{/homeUsuario}">Menu</a>
 
 
 	<!--<a href="#" id="backLink2" class="btn btn-success" >Atras</a>  -->
