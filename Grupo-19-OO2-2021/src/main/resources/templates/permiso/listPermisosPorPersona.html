@@ -14,12 +14,16 @@
 			<tr>
 				<th>Nombre del usuario </th>
 				<th>Fecha</th>
+				<th>codigo QR</th>
 			</tr>
 		</thead>
 		<tbody th:each="permiso : ${permisos}">
 			<tr>
 				<th th:text="${permiso.pedido.nombreUsuarioPersona}"> </th>
 				<th th:text="${permiso.fecha}"> </th>
+				<th>
+				<a class="btn btn-success  btn-lg btn-block" th:href="@{/irPrueba/}+${permiso.idPermiso}"> </a>
+				</th>
 			</tr>
 
 		</tbody>

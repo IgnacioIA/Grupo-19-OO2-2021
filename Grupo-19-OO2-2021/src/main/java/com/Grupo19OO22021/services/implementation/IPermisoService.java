@@ -22,5 +22,7 @@ public interface IPermisoService {
 
 	public List<Permiso> traerPermisosEntreFechas(DobleFechas dobleFecha);
 
+	public Permiso findById2(int id);
+
 
 }

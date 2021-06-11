@@ -43,7 +43,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 						"/lug",
 						"/permiso/asignarPersonaParaPermiso2",
 						"/createCommonQRCode",
-						"/barcodes/zxing/qrcode"
+						"/barcodes/zxing/qrcode",
+						"/irPrueba/{idPermiso}"
 						
 						).permitAll()
 				//HTTPS QUE PUEDE INGRESAR UN AUDITOR
