@@ -17,9 +17,12 @@ INSERT INTO usuario values(2,1,"Mansilla",null,"profe@gmail.com","Romina","romin
 INSERT INTO usuario values(3,1,"Vranic",null,"profe@gmail.com","Alejandra","alejandra",4200000,"CONTRASEÑA-ENCRIPTADA",1,1,null,1,3);
 
 
-INSERT INTO lugar values(1,1854,"CABA"); 
-INSERT INTO lugar values(2,1765,"Mar del plata"); 
-INSERT INTO lugar values(3,1856,"Bariloche");
-INSERT INTO lugar values(4,1854,"Lanús"); 
-INSERT INTO lugar values(5,1765,"Temperley"); 
-INSERT INTO lugar values(6,1856,"Constitución");
+INSERT INTO lugar values(1,1854,"CABA");  
+INSERT INTO lugar values(2,1856,"Bariloche");
+INSERT INTO lugar values(3,1765,"Mendoza");
+INSERT INTO lugar values(4,1795,"Pinamar"); 
+INSERT INTO lugar values(5,1565,"Retiro");
+INSERT INTO lugar values(6,1885,"Adrogue");
+INSERT INTO lugar values(7,1854,"Lanús"); 
+INSERT INTO lugar values(8,1095,"Temperley"); 
+INSERT INTO lugar values(9,1856,"Constitución");
