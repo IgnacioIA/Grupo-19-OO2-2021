@@ -29,19 +29,20 @@
 
 <div class="d-grid gap-2 col-6 mx-auto">
 
-		<form id="idFormulario"th:action="@{/barcodes/zxing/qrcode}" th:object=${stringUrl} method="post">
-		
+	<form id="idFormulario" th:action="@{/barcodes/zxing/qrcode}" th:object=${stringUrl} method="post">
+
 		<div class=" mb-3 row form-group">
 			<label class="col-sm-3 col-form-label" for="urlDireccion">urll</label>
-				<div class="col-sm-9" >
-					<input type="text" class="form-control" th:field="*{urlDireccion}"id="urlDireccion">	
-			
-				</div>
+			<div class="col-sm-9">
+				<input type="text" class="form-control" th:field="*{urlDireccion}" id="urlDireccion">
+
+			</div>
 		</div>
-		
+		<a class="btn btn-success" th:href="@{/homeUsuario}">Home Usuario</a>
 		<input id="btp" type="submit" value="Guardar" class="btn btn-success">
-		
-		</form>
+
+
+	</form>
 
 </div>
 
