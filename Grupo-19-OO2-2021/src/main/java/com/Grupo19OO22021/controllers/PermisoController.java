@@ -172,9 +172,6 @@ public class PermisoController {
 	
 	@PostMapping("/traerPermisosPorPersona")
 	public String traerPermisoPorPersona(@Valid @ModelAttribute("persona") Persona persona, BindingResult result,ModelMap model) {
-		
-		Persona u = personaService.findById(persona.getIdPersona());
-		Persona u2=new  Persona(u.getIdPersona(), u.getNombrePersona(), u.getApellidoPersona(), u.getDniPersona());
 	
 		List<Permiso> p= permisoService.findByPermisoPorPersona(persona.getIdPersona());
 		
