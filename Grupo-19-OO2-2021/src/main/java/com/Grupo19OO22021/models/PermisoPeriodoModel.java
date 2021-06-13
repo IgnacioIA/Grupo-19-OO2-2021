@@ -61,17 +61,5 @@ public class PermisoPeriodoModel extends PermisoModel {
 	public void setRodado(Rodado rodado) {
 		this.rodado = rodado;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

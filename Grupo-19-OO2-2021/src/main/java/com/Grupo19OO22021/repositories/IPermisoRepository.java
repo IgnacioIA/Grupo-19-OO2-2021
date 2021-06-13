@@ -12,7 +12,6 @@ import org.springframework.stereotype.Repository;
 
 import com.Grupo19OO22021.entities.Permiso;
 import com.Grupo19OO22021.entities.PermisoPeriodo;
-import com.mysql.cj.Query;
 
 
 @Repository("permisoRepository")

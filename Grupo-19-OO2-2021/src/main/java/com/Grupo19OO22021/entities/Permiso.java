@@ -18,15 +18,9 @@ import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-/*
- * Joined Table – cada clase tiene su propia tabla y realizar queries sobre subclases require join de tablas.
- */
-//@Table(name = "permiso", catalog = "curso")     ESTO ES PARA GENERAR UNA TABLA PARA EL PADRE
-//@Inheritance(strategy=InheritanceType.JOINED)    Y UNA TABLA POR CADA HIJA
 
 @Entity
 @Table(name="permiso")
-//@Inheritance(strategy= InheritanceType.JOINED)
 public class Permiso {
 
 	@Id
@@ -111,12 +105,6 @@ public class Permiso {
 	public void setLugares(List<Lugar> lugares) {
 		this.lugares = lugares;
 	}
-
-
-
-	
-	
-	
 	
 	
 }

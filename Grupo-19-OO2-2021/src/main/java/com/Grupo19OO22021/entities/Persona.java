@@ -143,19 +143,4 @@ public class Persona {
 		this.permisos = permisos;
 	}
 
-/*
-	public Set<Usuario> getUsuarios() {
-		return usuarios;
-	}
-
-
-	public void setUsuarios(Set<Usuario> usuarios) {
-		this.usuarios = usuarios;
-	}
-	*/
-	
-	
-	
-	
-	
 }

@@ -11,7 +11,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="permisoperiodo")
-//@PrimaryKeyJoinColumn(name="idPermiso")
 public class PermisoPeriodo extends Permiso{
 	
 	@Column(name="cantdias")
@@ -66,9 +65,5 @@ public class PermisoPeriodo extends Permiso{
 	public void setRodado(Rodado rodado) {
 		this.rodado = rodado;
 	}
-	
-	
-	
-	
 
 }

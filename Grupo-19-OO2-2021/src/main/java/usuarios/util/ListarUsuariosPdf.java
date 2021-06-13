@@ -33,8 +33,6 @@ public class ListarUsuariosPdf extends AbstractPdfView {
 			tablaUsuarios.addCell(usuario.getNombre());
 			tablaUsuarios.addCell(usuario.getApellido());
 			tablaUsuarios.addCell(usuario.getEmail());
-			//tablaUsuarios.addCell(usuario.getTipoDocumento().toString());
-			//tablaUsuarios.addCell(usuario.getNroDocumento().toString());
 			tablaUsuarios.addCell(usuario .getPerfil().getNombrePerfil());
 			
 		});

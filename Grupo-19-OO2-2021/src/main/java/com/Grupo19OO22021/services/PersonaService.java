@@ -35,27 +35,10 @@ public class PersonaService implements IPersonaService{
 
 	@Override
 	public Persona insertOrUpdate(Persona persona) {
-		//try {
 		Persona p= personaRepository.save(persona);
 			return p;
-		/*} catch (Exception e) {
-			throw new PerfilExistenteException(
-					"No se puede agregar ese perfil porque ya hay un perfil con ese nombre");
+	}
 
-		}*/
-//		return perfilConverter.entityToModel(perfil);
-	}
-/*
-	@Override
-	public boolean remove(int id) {
-		try {
-			perfilRepository.deleteById(id);
-			return true;
-		}catch (Exception e) {
-			return false;
-		}
-	}
-*/
 	@Override
 	public Persona findById(int id) {
 		return personaRepository.findByIdPersona(id);
@@ -69,12 +52,5 @@ public class PersonaService implements IPersonaService{
 		}
 		return u;
 	}
-	/*
-	@Override
-	public List<PerfilModel> findByDegreeNombre(String degreeName) {
-		List<PerfilModel> models = new ArrayList<PerfilModel>();
-		
-		return models;
-	}
-	*/
+	
 }

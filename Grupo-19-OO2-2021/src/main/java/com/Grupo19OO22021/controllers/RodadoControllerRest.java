@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Grupo19OO22021.entities.Rodado;
 import com.Grupo19OO22021.models.RodadoModel;
 import com.Grupo19OO22021.services.RodadoService;
 @RestController()

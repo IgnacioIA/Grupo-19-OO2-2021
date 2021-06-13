@@ -41,15 +41,10 @@ public class PerfilService implements IPerfilService {
 
 	@Override
 	public PerfilModel insertOrUpdate(PerfilModel perfilModel) {
-		//try {
+	
 			Perfil perfil= perfilRepository.save(perfilConverter.modelToEntity(perfilModel));
 			return perfilConverter.entityToModel(perfil);
-		/*} catch (Exception e) {
-			throw new PerfilExistenteException(
-					"No se puede agregar ese perfil porque ya hay un perfil con ese nombre");
-
-		}*/
-//		return perfilConverter.entityToModel(perfil);
+		
 	}
 
 	@Override

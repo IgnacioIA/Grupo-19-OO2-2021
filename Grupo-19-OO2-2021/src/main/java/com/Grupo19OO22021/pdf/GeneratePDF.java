@@ -34,25 +34,15 @@ public class GeneratePDF {
 		com.lowagie.text.Font font = FontFactory.getFont(FontFactory.HELVETICA);
 		font.setColor(Color.BLUE);
 		
-		
-		cell.setPhrase(new Phrase("ID", font));
-		tabla.addCell(cell);
 		cell.setPhrase(new Phrase("Nombre", font));
 		tabla.addCell(cell);
-		
-		//cell.setPhrase(new Phrase);
-		//tabla.addCell(cell);
-		//Datos del perfil
-		
-		
+	
 	}
 	
 	
 	private void writeTableData(PdfPTable tabla) {
 		for (Perfil perfil : listPerfil) {
-			tabla.addCell(String.valueOf(perfil.getIdPerfil()));
 			tabla.addCell(perfil.getNombrePerfil());
-			//tabla.addCell(String.valueOf(perfil.getIdPerfil()));
 		
 		}
 		
@@ -67,7 +57,7 @@ public class GeneratePDF {
 		
 		document.add(new Paragraph("Lista de Perfiles"));
 		
-		PdfPTable tabla = new PdfPTable(2);
+		PdfPTable tabla = new PdfPTable(1);
 		tabla.setWidthPercentage(100);
 		tabla.setSpacingBefore(15);
 		
@@ -79,65 +69,4 @@ public class GeneratePDF {
 		document.close();
 	}
 	
-	
-	/*
-	private PDDocument documento;
-	
-	public GeneratePDF(PDDocument documento) {
-		super();
-		this.documento = documento;
-	}
-	
-	
-	public PDDocument getDocumento() {
-		return documento;
-	}
-	
-	public void setDocumento(PDDocument documento) {
-		this.documento = documento;
-	}
-	
-	
-	public static PDDocument generatePDCListPerfil(List<Perfil> listPerfil) throws Exception{
-	
-	try (PDDocument document = new PDDocument()) {
-        PDPage page = new PDPage(PDRectangle.A6);
-        document.addPage(page);
-
-        PDPageContentStream contentStream = new PDPageContentStream(document, page);
-        
-        
-        contentStream.beginText();
-        contentStream.setFont(PDType1Font.TIMES_ITALIC, 8);
-        contentStream.newLineAtOffset( 10, page.getMediaBox().getHeight() - 52);
-    	contentStream.showText("Perfiles");
-    	contentStream.newLineAtOffset(0, -15);
-    	contentStream.showText("ID                Nombre del Perfil");
-    	contentStream.newLineAtOffset(0, -15);
-    
-    
-        for (int i = 0; i < listPerfil.size(); i++) {
-        
-        	contentStream.showText(imprimirPerfil(listPerfil.get(i)));
-        	contentStream.newLineAtOffset(0, -15);
-        }
-        contentStream.endText();
-        // Image
-//        PDImageXObject image = PDImageXObject.createFromByteArray(document, Main.class.getResourceAsStream("/java.png").readAllBytes(), "Java Logo");
-  //      contentStream.drawImage(image, 20, 20, image.getWidth() / 3, image.getHeight() / 3);
-
-        contentStream.close();
-
-        document.save("perfiles.pdf");
-        return document;
-    }
-	}
-	
-	
-	public static String imprimirPerfil(Perfil perfil) {
-		return perfil.getIdPerfil() +"                      " + perfil.getNombrePerfil()+ "                                                                                                                 ";
-	}
-	
-	
-	*/
 }

@@ -99,8 +99,6 @@ public class UsuarioService implements IUsuarioService ,UserDetailsService {
 		
 			grantedAuthorities.add(new SimpleGrantedAuthority(perfil.getNombrePerfil()));
 		
-			//grantedAuthorities.add(new SimpleGrantedAuthority(perfil.getNombrePerfil()));
-		
 		return new ArrayList<GrantedAuthority>(grantedAuthorities);
 	}
 	
@@ -125,7 +123,6 @@ public class UsuarioService implements IUsuarioService ,UserDetailsService {
 			throw new UsuarioExistenteException("No se puede agregar ya que hay un usuario con ese nombre de Usuario");
 
 		}
-//		return usuarioConverter.entityToModel(usuario);
 	}
 
 	@Override
@@ -143,7 +140,6 @@ public class UsuarioService implements IUsuarioService ,UserDetailsService {
 			throw new UsuarioExistenteException("No se puede agregar ya que hay un usuario con ese nombre de Usuario");
 
 		}
-//		return usuarioConverter.entityToModel(usuario);
 	}
 
 	@Override

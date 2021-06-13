@@ -6,6 +6,7 @@ import com.Grupo19OO22021.entities.Perfil;
 import com.Grupo19OO22021.models.PerfilModel;
 
 public interface IPerfilService  {
+	
 	public List<Perfil> getAll();
 	
 	public PerfilModel findById(int id);
@@ -15,6 +16,8 @@ public interface IPerfilService  {
 	public PerfilModel insertOrUpdate(PerfilModel perfilModel);
 	
 	public boolean remove(int id);
+	
 	public List<Perfil> getAllPerfilSolo();
+	
 	public List<PerfilModel> findByDegreeNombre(String degreeName);
 }

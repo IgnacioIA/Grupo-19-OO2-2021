@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Grupo19OO22021.entities.Persona;
 import com.Grupo19OO22021.services.QRCodeUtil;
 
 import usuarios.util.StringUrl;

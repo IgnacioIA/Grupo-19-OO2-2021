@@ -18,8 +18,6 @@ public interface IPermisoService {
 
 	public PermisoDiario insertOrUpdatePermisoDiario(PermisoDiario permisoDiario);
 
-	//public List<Permiso> formAsignaDobleFechas(DobleFechas dobleFecha);
-
 	public List<Permiso> traerPermisosEntreFechas(DobleFechas dobleFecha);
 
 	public Permiso findById2(int id);

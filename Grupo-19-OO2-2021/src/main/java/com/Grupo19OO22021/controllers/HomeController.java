@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import com.Grupo19OO22021.entities.Lugar;
 import com.Grupo19OO22021.entities.Permiso;
 import com.Grupo19OO22021.helpers.ViewRouteHelper;
-import com.Grupo19OO22021.models.DobleFechasYLugares;
-import com.Grupo19OO22021.models.PermisoModel;
 import com.Grupo19OO22021.services.PermisoService;
 
 import usuarios.util.StringUrl;

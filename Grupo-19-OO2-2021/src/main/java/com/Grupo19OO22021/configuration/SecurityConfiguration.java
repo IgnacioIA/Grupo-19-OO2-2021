@@ -47,24 +47,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 						"/irPrueba/{idPermiso}"
 						
 						).permitAll()
-				//HTTPS QUE PUEDE INGRESAR UN AUDITOR
-			/*
-				.antMatchers("/usuario/new").hasAnyRole("ADMIN")
-				.antMatchers("/usuario/new/").hasAnyRole("ADMIN")
-				.antMatchers("/usuario/save").hasAnyRole("ADMIN")
-				.antMatchers("/usuario/home/**").hasAnyRole("ADMIN")
-				.antMatchers("/usuario/editar/**").hasAnyRole("ADMIN")
-			    .antMatchers("/usuario/eliminar/**").hasAnyRole("ADMIN")
-			    
-			    .antMatchers("/perfil/new").hasAnyRole("ADMIN")
-			    .antMatchers("/perfil/new/").hasAnyRole("ADMIN")
-				.antMatchers("/perfil/seve").hasAnyRole("ADMIN")
-				.antMatchers("/perfil/home/**").hasAnyRole("ADMIN")
-				.antMatchers("/perfil/editar/**").hasAnyRole("ADMIN")
-			    .antMatchers("/perfil/eliminar/**").hasAnyRole("ADMIN")
 				
-		*/		
-				//.antMatchers("/permiso/traerPermisosPorRodado").hasAnyRole("USER")
 				.anyRequest().authenticated()
 			.and()
 				.formLogin().loginPage("/usuario/login").loginProcessingUrl("/usuario/loginprocess")

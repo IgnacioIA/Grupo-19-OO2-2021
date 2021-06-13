@@ -9,6 +9,7 @@ import com.Grupo19OO22021.entities.Usuario;
 import com.Grupo19OO22021.models.UsuarioModel;
 
 public interface IUsuarioService {
+	
 	public List<Usuario> getAll();
 
 	public UsuarioModel findById(int id);
@@ -32,11 +33,11 @@ public interface IUsuarioService {
 	
 	// USADOS PARA LA VALIDACION
 	public Iterable<Usuario> getAllUsuarios();
-	// private boolean checkUsernameAvailable(Usuario usuario);
 
 	List<Usuario> getAllActivo();
 
 	public UsuarioModel upDateBaja(UsuarioModel usuarioModel);
+	
 	public List<Usuario> getAllActivoSinPerfiles();
 		
 

@@ -79,8 +79,5 @@ public class Rodado {
 	public void setPermisoPeriodos(Set<PermisoPeriodo> permisoPeriodos) {
 		this.permisoPeriodos = permisoPeriodos;
 	}
-	
-	
-	
 
 }

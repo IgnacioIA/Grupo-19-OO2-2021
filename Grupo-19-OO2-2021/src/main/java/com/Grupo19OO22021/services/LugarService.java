@@ -9,12 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.Grupo19OO22021.converters.RodadoConverter;
 import com.Grupo19OO22021.entities.Lugar;
-import com.Grupo19OO22021.entities.Rodado;
-import com.Grupo19OO22021.models.RodadoModel;
 import com.Grupo19OO22021.repositories.ILugarRepository;
-import com.Grupo19OO22021.repositories.IRodadoRepository;
 import com.Grupo19OO22021.services.implementation.ILugarService;
-import com.Grupo19OO22021.services.implementation.IRodadoService;
 
 @Service("lugarService")
 public class LugarService implements ILugarService{
@@ -49,15 +45,5 @@ public class LugarService implements ILugarService{
 	public Lugar findById(int id) {
 		return lugarRepository.findByIdLugar(id);
 	}
-/*
-	@Override
-	public RodadoModel findByDominio(String dominio) {
-		RodadoModel u = null;
-		if(rodadoRepository.findByDominio(dominio)!=null){
-			u = rodadoConverter.entityToModel(rodadoRepository.findByDominio(dominio));
-		}
-		return u;
-	}
-	*/
-	
+
 }

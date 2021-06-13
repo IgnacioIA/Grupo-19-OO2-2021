@@ -215,7 +215,6 @@ public class PermisoController {
 		@PostMapping("/traerPermisosPorDobleFecha")
 		public String traerPermisoPorDobleFecha(@Valid @ModelAttribute("dobleFechas") DobleFechas dobleFechas, BindingResult result,ModelMap model) {
 			
-			DobleFechas d= dobleFechas;
 			List<Permiso> p = permisoService.traerPermisosEntreFechas(dobleFechas);
 		
 			model.addAttribute("permisos", p);

@@ -35,10 +35,7 @@ public class RodadoModel {
 		this.vehiculo = vehiculo;
 	}
 
-	public RodadoModel(int idRodado,
-			@NotBlank @Size(min = 3, max = 15, message = "No se cumplen las reglas del tamano (3-15)") String dominio,
-			@NotBlank @Size(min = 3, max = 15, message = "No se cumplen las reglas del tamano (3-15)") String vehiculo,
-			Set<PermisoPeriodo> permisoPeriodos) {
+	public RodadoModel(int idRodado,String dominio, String vehiculo, Set<PermisoPeriodo> permisoPeriodos) {
 		super();
 		this.idRodado = idRodado;
 		this.dominio = dominio;
@@ -77,9 +74,5 @@ public class RodadoModel {
 	public void setPermisoPeriodos(Set<PermisoPeriodo> permisoPeriodos) {
 		this.permisoPeriodos = permisoPeriodos;
 	}
-
-	
-	
-	
 
 }

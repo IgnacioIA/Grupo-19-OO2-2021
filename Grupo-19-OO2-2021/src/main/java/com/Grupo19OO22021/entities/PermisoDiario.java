@@ -9,7 +9,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="permisodiario")
-//@PrimaryKeyJoinColumn(name="idPermiso")
 public class PermisoDiario extends Permiso {
 	
 	@Column(name="motivo")
@@ -38,10 +37,6 @@ public class PermisoDiario extends Permiso {
 
 	public void setMotivo(String motivo) {
 		this.motivo = motivo;
-	}
-
-	
-	
-	
+	}	
 	
 }

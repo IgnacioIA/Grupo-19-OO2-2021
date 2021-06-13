@@ -13,15 +13,11 @@ public interface IRodadoService {
 	
 	public RodadoModel findByDominio(String dominio);
 	
-	//public RodadoModel findByVehiculo(String vehiculo);
-	
 	public RodadoModel insertOrUpdate(RodadoModel rodadoModel);
 	
 	public boolean remove(int id);
 
 	public List<Rodado> getAllSolo();
 	
-	//public List<RodadoModel> findByDegreeNombre(String degreeName);
-
 
 }

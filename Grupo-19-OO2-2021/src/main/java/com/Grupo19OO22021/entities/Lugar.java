@@ -71,9 +71,6 @@ public class Lugar {
 	public void setPermisos(List<Permiso> permisos) {
 		this.permisos = permisos;
 	}
-	
-	
-	
-	
+
 	
 }
